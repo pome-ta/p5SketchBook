@@ -21,7 +21,7 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    soundReset();
+    soundReStart();
 
     const cnv = p.createCanvas(w, h);
     cnv.mousePressed(playOscillator);
@@ -63,18 +63,34 @@ const sketch = (p) => {
     p.resizeCanvas(w, h);
   };
 
-  function soundReset() {
-    // const actx = p.getAudioContext();
-    const gain = p.soundOut.output.gain;
-    const defaultValue = gain.defaultValue;
-    // todo: クリップノイズ対策
-    gain.value = -1;
-    window._cacheSounds?.forEach((s) => {
-      s?.stop && s?.stop();
-      s?.disconnect && s?.disconnect();
-    });
+  function soundReStart() {
+    // wip: クリップノイズ対策
+    p.disposeSound();
 
-    gain.value = defaultValue;
+    const soundArray = p.soundOut.soundArray;
+    for (let soundIdx = soundArray.length - 1; soundIdx >= 0; soundIdx--) {
+      const sound = soundArray[soundIdx];
+      // todo: 過剰処理？
+      sound?.stop && sound.stop();
+      sound?.dispose && sound.dispose();
+      sound?.disconnect && sound.disconnect();
+
+      soundArray.splice(soundIdx, 1);
+    }
+
+    const parts = p.soundOut.parts;
+    for (let partIdx = parts.length - 1; partIdx >= 0; partIdx--) {
+      const phrases = parts[partIdx].phrases;
+      for (let phraseIdx = phrases.length - 1; phraseIdx >= 0; phraseIdx--) {
+        phrases.splice(phraseIdx, 1);
+      }
+      parts.splice(partIdx, 1);
+    }
+
+    p.soundOut.soundArray = [];
+    p.soundOut.parts = [];
+    p.soundOut.extensions = []; // todo: 対応必要？
+
     p.userStartAudio();
   }
 };

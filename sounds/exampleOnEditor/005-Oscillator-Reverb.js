@@ -15,13 +15,12 @@ const sketch = (p) => {
     const cnv = p.createCanvas(w, h);
     p.background(220);
     cnv.mousePressed(playSound);
-    
 
     osc = new p5.Oscillator('sine');
     reverb = new p5.Reverb();
     osc.disconnect();
     osc.connect(reverb);
-    
+
     p.textAlign(p.CENTER);
     p.text('click to play', w / 2, h / 2);
   };
@@ -35,14 +34,11 @@ const sketch = (p) => {
     if (!playing) {
       osc.start();
       playing = true;
-    } 
-    else {
+    } else {
       osc.stop();
       playing = false;
     }
   }
-
-  
 
   p.windowResized = (e) => {
     w = p.windowWidth;
@@ -83,4 +79,3 @@ const sketch = (p) => {
 };
 
 new p5(sketch);
-

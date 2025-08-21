@@ -68,13 +68,13 @@ const sketch = (p) => {
   };
 
   p.touchStarted = (e) => {
-    if (!songStarted) { // Only play once
-      for (let i = 0; i < song.length; i++) {
-        const note = song[i];
-        synth.play(note.pitch, note.velocity, note.time, note.duration);
-      }
-      songStarted = true;
+    if (songStarted) {
+      return;
     }
+    songStarted = true; // Only play once
+    song.forEach((note) => {
+      synth.play(note.pitch, note.velocity, note.time, note.duration);
+    });
   };
 
   p.touchMoved = (e) => {
@@ -122,4 +122,3 @@ const sketch = (p) => {
 };
 
 new p5(sketch);
-

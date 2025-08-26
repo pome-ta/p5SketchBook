@@ -3,8 +3,7 @@ const interactionTraceKitPath =
   '../../sketchBooks/modules/interactionTraceKit.js';
 
 const sketch = (p) => {
-  let w = p.windowWidth;
-  let h = p.windowHeight;
+  let w, h;
   let bgColor;
 
   let spectrumAnalyzer;
@@ -37,7 +36,8 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    soundReset();
+    w = p.windowWidth;
+    h = p.windowHeight;
 
     p.canvas.addEventListener(pointerTracker.move, (e) => e.preventDefault(), {
       passive: false,
@@ -104,21 +104,6 @@ const sketch = (p) => {
     h = p.windowHeight;
     p.resizeCanvas(w, h);
   };
-
-  function soundReset() {
-    // const actx = p.getAudioContext();
-    const gain = p.soundOut.output.gain;
-    const defaultValue = gain.defaultValue;
-    // todo: クリップノイズ対策
-    gain.value = -1;
-    window._cacheSounds?.forEach((s) => {
-      s?.stop && s?.stop();
-      s?.disconnect && s?.disconnect();
-    });
-
-    gain.value = defaultValue;
-    p.userStartAudio();
-  }
 };
 
 new p5(sketch);

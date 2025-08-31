@@ -179,4 +179,4 @@ class TapIndicator {
   }
 }
 
-export { PointerTracker, TapIndicator, };
+export { PointerTracker, TapIndicator };

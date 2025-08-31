@@ -160,7 +160,7 @@ const sketch = (p) => {
     pressed = false;
   };
   */
-  
+
   p.touchStarted = (e) => {
     for (let i = 0; i < cntrls.length; i++) {
       if (cntrls[i].mouseOver()) {
@@ -171,13 +171,11 @@ const sketch = (p) => {
     }
   };
 
-
   p.touchMoved = (e) => {};
 
   p.touchEnded = (e) => {
     pressed = false;
   };
-
 
   const getRange = (type) => {
     switch (type) {

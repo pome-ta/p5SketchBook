@@ -1,7 +1,30 @@
+from __future__ import annotations
+
+from dataclasses import dataclass, field, asdict
 from pathlib import Path
 import glob
 import json
 
+from pprint import pprint
+
+
+
+@dataclass
+class FileNode:
+  name: str
+  type: str
+  #children: list[FileNode] | None = None
+  children: list[FileNode] | None = field(default_factory=list)
+  
+  
+
+
+def build_tree(path: Path) -> FileNode:
+  if path.is_dir():
+    children = [build_tree(child) for child in sorted(path.iterdir())]
+    return FileNode(name=path.name, type='dir', children=children)
+  else:
+    return FileNode(name=path.name, type='file')
 
 def main(root_path:Path):
   for g in root_path.rglob('*'):
@@ -17,6 +40,9 @@ if __name__ == '__main__':
   
   
 
-  main(target_path)
+  #main(target_path)
+  tree = build_tree(target_path)
+  a = asdict(tree)
+  pprint(a)
 
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field, InitVar, asdict
 from pathlib import Path
 import json
 
@@ -9,17 +9,21 @@ from pprint import pprint
 
 @dataclass
 class FileNode:
-  name: str
+  path_obj: InitVar[Path]
+  name: str = field(init=False)
   type: str
   children: list[FileNode] | None = None
+
+  def __post_init__(self, path_obj):
+    self.name = path_obj.name
 
 
 def build_tree(path: Path) -> FileNode:
   if path.is_dir():
     children = [build_tree(child) for child in sorted(path.iterdir())]
-    return FileNode(name=path.name, type='dir', children=children)
+    return FileNode(path, type='dir', children=children)
   else:
-    return FileNode(name=path.name, type='file')
+    return FileNode(path, type='file')
 
 
 def main(root_path: Path):

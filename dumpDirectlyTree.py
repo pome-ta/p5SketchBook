@@ -26,7 +26,6 @@ class FileNode:
     self.parent = str(path_obj.parent)
     self.st_ctime = path_obj.stat().st_ctime
     self.st_mtime = path_obj.stat().st_mtime
-    #print(path_obj.resolve_to(Path('./')))
 
 
 def build_tree(path: Path) -> FileNode:

@@ -4,8 +4,6 @@ from dataclasses import dataclass, field, InitVar, asdict
 from pathlib import Path
 import json
 
-from pprint import pprint
-
 
 @dataclass
 class FileNode:
@@ -36,22 +34,14 @@ def build_tree(path: Path) -> FileNode:
     return FileNode(path, type='file')
 
 
-def main(root_path: Path):
-  for g in root_path.rglob('*'):
-    print(type(g))
-
-
 if __name__ == '__main__':
   target_path_str = './sounds'
   save_path_srt = './docs'
 
   target_path = Path(target_path_str)
+  tree_node = build_tree(target_path)
+  tree_dict = asdict(tree_node)
+  tree_json = json.dumps(tree_dict, ensure_ascii=False, indent=2)
 
-  #main(target_path)
-  tree = build_tree(target_path)
-  a = asdict(tree)
-  s = json.dumps(a, ensure_ascii=False, indent=2)
-
-  #pprint(a)
-  print(s)
+  print(tree_json)
 

@@ -35,7 +35,7 @@ def build_tree(path: Path) -> FileNode:
 
 
 if __name__ == '__main__':
-  target_path_str = './sounds'
+  target_path_str = './docs/js/sounds'
   save_path_srt = './docs'
 
   target_path = Path(target_path_str)

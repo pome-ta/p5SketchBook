@@ -12,10 +12,21 @@ class FileNode:
   path_obj: InitVar[Path]
   name: str = field(init=False)
   type: str
+  path: str = field(init=False)
+  suffix: str = field(init=False)
+  parent: str = field(init=False)
+  st_ctime: float = field(init=False)
+  st_mtime: float = field(init=False)
   children: list[FileNode] | None = None
 
   def __post_init__(self, path_obj):
     self.name = path_obj.name
+    self.path = str(path_obj)
+    self.suffix = ''.join(path_obj.suffix)
+    self.parent = str(path_obj.parent)
+    self.st_ctime = path_obj.stat().st_ctime
+    self.st_mtime = path_obj.stat().st_mtime
+    #print(path_obj.resolve_to(Path('./')))
 
 
 def build_tree(path: Path) -> FileNode:

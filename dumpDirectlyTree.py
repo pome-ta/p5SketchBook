@@ -43,6 +43,9 @@ if __name__ == '__main__':
   tree_node = build_tree(target_path)
   tree_dict = asdict(tree_node)
   tree_json = json.dumps(tree_dict, ensure_ascii=False, indent=2)
+  
+  json_file = Path(save_path_srt, 'tree.json')
+  json_file.write_text(tree_json, encoding='utf-8')
 
   print(tree_json)
 

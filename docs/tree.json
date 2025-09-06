@@ -1,0 +1,183 @@
+{
+  "name": "sounds",
+  "type": "dir",
+  "path": "sounds",
+  "suffix": "",
+  "parent": ".",
+  "st_ctime": 1757077637.8127174,
+  "st_mtime": 1756218789.1588192,
+  "children": [
+    {
+      "name": "exampleOnEditor",
+      "type": "dir",
+      "path": "sounds/exampleOnEditor",
+      "suffix": "",
+      "parent": "sounds",
+      "st_ctime": 1755331847.8843858,
+      "st_mtime": 1755331847.8843858,
+      "children": [
+        {
+          "name": "001-Oscillator-FrequencyAmplitude.js",
+          "type": "file",
+          "path": "sounds/exampleOnEditor/001-Oscillator-FrequencyAmplitude.js",
+          "suffix": ".js",
+          "parent": "sounds/exampleOnEditor",
+          "st_ctime": 1756218789.146155,
+          "st_mtime": 1756218789.146155,
+          "children": null
+        },
+        {
+          "name": "002-Amplitude-VisualizingLoudness.js",
+          "type": "file",
+          "path": "sounds/exampleOnEditor/002-Amplitude-VisualizingLoudness.js",
+          "suffix": ".js",
+          "parent": "sounds/exampleOnEditor",
+          "st_ctime": 1756218789.1484506,
+          "st_mtime": 1756218789.1484506,
+          "children": null
+        },
+        {
+          "name": "003-Microphone-Effects.js",
+          "type": "file",
+          "path": "sounds/exampleOnEditor/003-Microphone-Effects.js",
+          "suffix": ".js",
+          "parent": "sounds/exampleOnEditor",
+          "st_ctime": 1756218789.1507854,
+          "st_mtime": 1756218789.1507854,
+          "children": null
+        },
+        {
+          "name": "004-OscillatorAmplitudeLFOmodulation.js",
+          "type": "file",
+          "path": "sounds/exampleOnEditor/004-OscillatorAmplitudeLFOmodulation.js",
+          "suffix": ".js",
+          "parent": "sounds/exampleOnEditor",
+          "st_ctime": 1756371273.9015372,
+          "st_mtime": 1756218789.1535304,
+          "children": null
+        },
+        {
+          "name": "005-Oscillator-Reverb.js",
+          "type": "file",
+          "path": "sounds/exampleOnEditor/005-Oscillator-Reverb.js",
+          "suffix": ".js",
+          "parent": "sounds/exampleOnEditor",
+          "st_ctime": 1756218789.1561282,
+          "st_mtime": 1756218789.1561282,
+          "children": null
+        },
+        {
+          "name": "006-DelayTime-Envelope.js",
+          "type": "file",
+          "path": "sounds/exampleOnEditor/006-DelayTime-Envelope.js",
+          "suffix": ".js",
+          "parent": "sounds/exampleOnEditor",
+          "st_ctime": 1756218789.1586807,
+          "st_mtime": 1756218789.1586807,
+          "children": null
+        },
+        {
+          "name": "memo.md",
+          "type": "file",
+          "path": "sounds/exampleOnEditor/memo.md",
+          "suffix": ".md",
+          "parent": "sounds/exampleOnEditor",
+          "st_ctime": 1755331847.8903348,
+          "st_mtime": 1755331847.8903348,
+          "children": null
+        }
+      ]
+    },
+    {
+      "name": "memo.md",
+      "type": "file",
+      "path": "sounds/memo.md",
+      "suffix": ".md",
+      "parent": "sounds",
+      "st_ctime": 1756218789.161623,
+      "st_mtime": 1756218789.161623,
+      "children": null
+    },
+    {
+      "name": "metronom.js",
+      "type": "file",
+      "path": "sounds/metronom.js",
+      "suffix": ".js",
+      "parent": "sounds",
+      "st_ctime": 1756218789.1637168,
+      "st_mtime": 1756218789.1637168,
+      "children": null
+    },
+    {
+      "name": "v1Examples",
+      "type": "dir",
+      "path": "sounds/v1Examples",
+      "suffix": "",
+      "parent": "sounds",
+      "st_ctime": 1756446514.2695594,
+      "st_mtime": 1756446514.2695594,
+      "children": [
+        {
+          "name": "Compressor.js",
+          "type": "file",
+          "path": "sounds/v1Examples/Compressor.js",
+          "suffix": ".js",
+          "parent": "sounds/v1Examples",
+          "st_ctime": 1756650485.8776567,
+          "st_mtime": 1756650485.8776567,
+          "children": null
+        },
+        {
+          "name": "DelayNoiseEnvelope.js",
+          "type": "file",
+          "path": "sounds/v1Examples/DelayNoiseEnvelope.js",
+          "suffix": ".js",
+          "parent": "sounds/v1Examples",
+          "st_ctime": 1756650485.880195,
+          "st_mtime": 1756650485.880195,
+          "children": null
+        },
+        {
+          "name": "_monosynth_basic.js",
+          "type": "file",
+          "path": "sounds/v1Examples/_monosynth_basic.js",
+          "suffix": ".js",
+          "parent": "sounds/v1Examples",
+          "st_ctime": 1756650485.8827076,
+          "st_mtime": 1756650485.8827076,
+          "children": null
+        },
+        {
+          "name": "array_of_notes.js",
+          "type": "file",
+          "path": "sounds/v1Examples/array_of_notes.js",
+          "suffix": ".js",
+          "parent": "sounds/v1Examples",
+          "st_ctime": 1756218789.166594,
+          "st_mtime": 1756218789.166594,
+          "children": null
+        },
+        {
+          "name": "memo.md",
+          "type": "file",
+          "path": "sounds/v1Examples/memo.md",
+          "suffix": ".md",
+          "parent": "sounds/v1Examples",
+          "st_ctime": 1756370569.274416,
+          "st_mtime": 1756356427.9625597,
+          "children": null
+        },
+        {
+          "name": "virtual_piano.js",
+          "type": "file",
+          "path": "sounds/v1Examples/virtual_piano.js",
+          "suffix": ".js",
+          "parent": "sounds/v1Examples",
+          "st_ctime": 1756218789.1690295,
+          "st_mtime": 1756218789.1690295,
+          "children": null
+        }
+      ]
+    }
+  ]
+}

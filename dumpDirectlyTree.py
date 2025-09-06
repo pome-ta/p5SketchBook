@@ -19,9 +19,9 @@ class FileNode:
 
   def __post_init__(self, path_obj):
     self.name = path_obj.name
-    self.path = str(path_obj)
+    self.path = str(path_obj.relative_to('docs/js'))
     self.suffix = ''.join(path_obj.suffix)
-    self.parent = str(path_obj.parent)
+    self.parent = str(path_obj.relative_to('docs/js').parent)
     self.st_ctime = path_obj.stat().st_ctime
     self.st_mtime = path_obj.stat().st_mtime
 
@@ -39,6 +39,7 @@ if __name__ == '__main__':
   save_path_srt = './docs'
 
   target_path = Path(target_path_str)
+  
   tree_node = build_tree(target_path)
   tree_dict = asdict(tree_node)
   tree_json = json.dumps(tree_dict, ensure_ascii=False, indent=2)

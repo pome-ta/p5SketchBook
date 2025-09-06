@@ -330,7 +330,7 @@ class WebViewController(UIViewController):
       action=SEL('saveFileAction:'))
 
     return [
-      saveUpdateButtonItem,
+      #saveUpdateButtonItem,
       self.createFlexibleSpaceBarButtonItem(),
     ]
 

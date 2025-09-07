@@ -1,3 +1,3 @@
-import treeJson from '../tree.json' with { type: 'json' };
+import dirTree from 'dirTree' with { type: 'json' };
 
-console.log(treeJson)
+console.log(dirTree)

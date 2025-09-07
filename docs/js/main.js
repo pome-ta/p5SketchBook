@@ -1,7 +1,7 @@
 import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
-console.log(DomFactory);
+//console.log(DomFactory);
 
 const walk = (treeNodes, parent) => {
   treeNodes.forEach((treeNode) => {

@@ -8,7 +8,7 @@ const walk = (treeNodes, parent) => {
     }
     
     const li = document.createElement('li');
-    li.textContent = treeNode.name;
+    li.textContent = `${treeNode.type === 'file' ? '📄' : '📁'} ${treeNode.name}`;
     if (treeNode.type === 'dir') {
       const ulSub = document.createElement('ul');
       walk(treeNode.children, ulSub);

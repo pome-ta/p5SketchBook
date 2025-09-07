@@ -1,3 +1,3 @@
-import dirTree from 'dirTree' with { type: 'json' };
+import dirTree from 'dirTree' with {type: 'json'};
 
-console.log(dirTree)
+console.log(dirTree);

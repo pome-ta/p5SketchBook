@@ -1,31 +1,31 @@
 import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
-console.log(dirTree);
 
-const summary1 = DomFactory.create('summary', {
-  textContent: 'fuga'
+
+const dirTreeDetails = (treeNodes, parent) => {
+  treeNodes.forEach((treeNode) => {
+    if (treeNode.type === 'dir') {
+      
+    } else if (treeNode.type === 'file') {
+      
+    }
+  });
+}
+
+const wrap = DomFactory.create('div', {
+  setStyles: {
+    'font-family':
+      'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
+    'font-size': '0.8rem',
+  },
+  
 });
-
-const details1 = DomFactory.create('details', {
-  appendChildren: [summary1]
-});
-
-const summary = DomFactory.create('summary', {
-  textContent: 'hoge'
-});
-
-const details = DomFactory.create('details', {
-  appendChildren: [summary]
-});
-
-
-details.appendChild(details1);
 
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
-  document.body.appendChild(details);
+  document.body.appendChild(wrap);
 
 });
 
@@ -69,13 +69,40 @@ const ul = DomFactory.create('ul', {
 });
 
 walk(dirTree, ul);
-const details = DomFactory.create('details')
-details.appendChild(ul)
+
 
 document.addEventListener('DOMContentLoaded', () => {
   //console.log('DOMContentLoaded');
-  //document.body.appendChild(ul);
-  document.body.appendChild(details);
+  document.body.appendChild(ul);
+  
 
 });
 */
+
+
+/*
+const summary1 = DomFactory.create('summary', {
+  textContent: 'fuga'
+});
+
+const details1 = DomFactory.create('details', {
+  appendChildren: [summary1]
+});
+
+const summary = DomFactory.create('summary', {
+  textContent: 'hoge'
+});
+
+const details = DomFactory.create('details', {
+  appendChildren: [summary]
+});
+
+
+details.appendChild(details1);
+
+
+*/
+
+
+
+

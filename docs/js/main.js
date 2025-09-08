@@ -6,7 +6,6 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
   indent++;
   treeNodes.forEach((treeNode) => {
     if (treeNode.type === 'dir') {
-
       const dirSummary = DomFactory.create('summary', {
         textContent: `📁 ${treeNode.name}`,
         setStyles: {
@@ -20,10 +19,15 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
         },
         appendChildren: [dirSummary],
       });
-      dirTreeDetails(treeNode.children, detailDir, indent);
       parent.appendChild(detailDir);
+      dirTreeDetails(treeNode.children, detailDir, indent);
+      
 
     } else if (treeNode.type === 'file') {
+      // wip: もうちょっとスマートに書きたい
+      if (treeNode.suffix === '.md') {
+        return;
+      }
       const fileName = DomFactory.create('p', {
         textContent: `📄 ${treeNode.name}`,
         setStyles: {
@@ -32,23 +36,11 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
           //overflow: 'hidden',
           //'text-overflow': 'ellipsis',
           'white-space': 'nowrap',
-          //width: '100%'
         }
       });
       const fileDiv = DomFactory.create('div', {
         appendChildren: [fileName,]
       });
-      // const fileDiv = DomFactory.create('div', {
-      //     textContent: `📄 ${treeNode.name}`,
-      //     setStyles: {
-      //       'text-indent': `${indent + 1}rem`,
-      //       // margin: 0,
-      //       // overflow: 'hidden',
-      //       // 'text-overflow': 'ellipsis',
-      //       // 'white-space': 'nowrap',
-      //       // width: '100%'
-      //     }
-      // });
       parent.appendChild(fileDiv);
     }
   });
@@ -60,13 +52,28 @@ const wrap = DomFactory.create('div', {
     'font-family':
       'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
     'font-size': '0.8rem',
-    // width: '100%',
+    //width: '100%',
   },
 
 });
 
+
 dirTreeDetails(dirTree, wrap);
 
+
+
+const showButton = DomFactory.create('button', {
+    setAttrs: {
+    autofocus: true,
+  },
+  setStyles: {
+    'border-radius': '0.5rem',
+    margin: '0.5rem 0',
+  },
+  appendChildren: [DomFactory.create('p', {
+    textContent: 'show directly tree',
+  })]
+});
 
 const closeButton = DomFactory.create('button', {
   setAttrs: {
@@ -74,7 +81,7 @@ const closeButton = DomFactory.create('button', {
   },
   setStyles: {
     'border-radius': '0.5rem',
-    margin: '1rem',
+    margin: '0.5rem 0',
   },
   appendChildren: [DomFactory.create('p', {
     textContent: 'close',
@@ -93,6 +100,15 @@ const dialog = DomFactory.create('dialog', {
   appendChildren: [closeButton, wrap,],
   targetAddEventListeners: [
     {
+      target: showButton,
+      type: 'click',
+      listener: {
+        handleEvent: event => {
+          dialog.showModal();
+        }
+      }
+    },
+    {
       target: closeButton,
       type: 'click',
       listener: {
@@ -100,23 +116,12 @@ const dialog = DomFactory.create('dialog', {
           dialog.close();
         }
       }
-    }
+    },
 
   ]
 });
-const showButton = DomFactory.create('button', {
-  textContent: 'show',
-  addEventListeners: [
-    {
-      type: 'click',
-      listener: {
-        handleEvent: event => {
-          dialog.showModal();
-        }
-      }
-    }
-  ]
-});
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

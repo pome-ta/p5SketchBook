@@ -6,7 +6,8 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
   indent++;
   treeNodes.forEach((treeNode) => {
     if (treeNode.type === 'dir') {
-      const dirName = DomFactory.create('summary', {
+
+      const dirSummary = DomFactory.create('summary', {
         textContent: `📁 ${treeNode.name}`,
         setStyles: {
           'text-indent': `${indent}rem`,
@@ -17,7 +18,7 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
         setAttrs: {
           open: `${true}`,
         },
-        appendChildren: [dirName]
+        appendChildren: [dirSummary],
       });
       dirTreeDetails(treeNode.children, detailDir, indent);
       parent.appendChild(detailDir);
@@ -67,9 +68,62 @@ const wrap = DomFactory.create('div', {
 dirTreeDetails(dirTree, wrap);
 
 
+const closeButton = DomFactory.create('button', {
+  setAttrs: {
+    autofocus: true,
+  },
+  setStyles: {
+    'border-radius': '0.5rem',
+    margin: '1rem',
+  },
+  appendChildren: [DomFactory.create('p', {
+    textContent: 'close',
+  })]
+});
+
+
+const dialog = DomFactory.create('dialog', {
+  setStyles: {
+    'width': '88%',
+    'height': '88%',
+    border: 'none',
+    'border-radius': '0.5rem',
+    'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
+  },
+  appendChildren: [closeButton, wrap,],
+  targetAddEventListeners: [
+    {
+      target: closeButton,
+      type: 'click',
+      listener: {
+        handleEvent: event => {
+          dialog.close();
+        }
+      }
+    }
+
+  ]
+});
+const showButton = DomFactory.create('button', {
+  textContent: 'show',
+  addEventListeners: [
+    {
+      type: 'click',
+      listener: {
+        handleEvent: event => {
+          dialog.showModal();
+        }
+      }
+    }
+  ]
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
-  document.body.appendChild(wrap);
+  document.body.appendChild(showButton);
+  document.body.appendChild(dialog);
+
 
 });
 

@@ -1,8 +1,24 @@
 import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
-//console.log(DomFactory);
 
+
+const summary = DomFactory.create('summary', {
+  textContent: 'hoge'
+});
+
+const details = DomFactory.create('details', {
+  appendChildren: [summary]
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded');
+  document.body.appendChild(details);
+
+});
+
+
+/*
 const walk = (treeNodes, parent) => {
   treeNodes.forEach((treeNode) => {
     // wip: もうちょっとスマートに書きたい
@@ -50,3 +66,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(details);
 
 });
+*/

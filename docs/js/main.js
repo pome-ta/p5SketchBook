@@ -27,11 +27,11 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
         textContent: `📄 ${treeNode.name}`,
         setStyles: {
           'text-indent': `${indent + 1}rem`,
-          margin: 0,
-          overflow: 'hidden',
-          'text-overflow': 'ellipsis',
+          //margin: 0,
+          //overflow: 'hidden',
+          //'text-overflow': 'ellipsis',
           'white-space': 'nowrap',
-          // width: '100%'
+          //width: '100%'
         }
       });
       const fileDiv = DomFactory.create('div', {

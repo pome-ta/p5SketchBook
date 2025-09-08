@@ -4,8 +4,19 @@ import dirTree from 'dirTree' with {type: 'json'};
 
 
 const dirTreeDetails = (treeNodes, parent) => {
-  treeNodes.forEach((treeNode) => {
+  treeNodes.forEach((treeNode, idx) => {
     if (treeNode.type === 'dir') {
+      const dirName = DomFactory.create('summary', {
+        textContent: `📁 ${treeNode.name}`
+      });
+      const detailDir = DomFactory.create('details', {
+        setAttrs: {
+          open: `${true}`,
+        },
+        appendChildren: [dirName]
+      });
+      dirTreeDetails(treeNode.children, detailDir);
+      parent.appendChild(detailDir);
       
     } else if (treeNode.type === 'file') {
       
@@ -21,6 +32,8 @@ const wrap = DomFactory.create('div', {
   },
   
 });
+
+dirTreeDetails(dirTree, wrap)
 
 
 document.addEventListener('DOMContentLoaded', () => {

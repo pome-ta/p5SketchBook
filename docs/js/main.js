@@ -2,38 +2,69 @@ import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
 
-
-const dirTreeDetails = (treeNodes, parent) => {
-  treeNodes.forEach((treeNode, idx) => {
+const dirTreeDetails = (treeNodes, parent, indent = 0) => {
+  indent++;
+  treeNodes.forEach((treeNode) => {
     if (treeNode.type === 'dir') {
       const dirName = DomFactory.create('summary', {
-        textContent: `📁 ${treeNode.name}`
+        textContent: `📁 ${treeNode.name}`,
+        setStyles: {
+          'text-indent': `${indent}rem`,
+        }
       });
+
       const detailDir = DomFactory.create('details', {
         setAttrs: {
           open: `${true}`,
         },
         appendChildren: [dirName]
       });
-      dirTreeDetails(treeNode.children, detailDir);
+      dirTreeDetails(treeNode.children, detailDir, indent);
       parent.appendChild(detailDir);
-      
+
     } else if (treeNode.type === 'file') {
-      
+      const fileName = DomFactory.create('p', {
+        textContent: `📄 ${treeNode.name}`,
+        setStyles: {
+          'text-indent': `${indent + 1}rem`,
+          margin: 0,
+          overflow: 'hidden',
+          'text-overflow': 'ellipsis',
+          'white-space': 'nowrap',
+          // width: '100%'
+        }
+      });
+      const fileDiv = DomFactory.create('div', {
+        appendChildren: [fileName,]
+      });
+      // const fileDiv = DomFactory.create('div', {
+      //     textContent: `📄 ${treeNode.name}`,
+      //     setStyles: {
+      //       'text-indent': `${indent + 1}rem`,
+      //       // margin: 0,
+      //       // overflow: 'hidden',
+      //       // 'text-overflow': 'ellipsis',
+      //       // 'white-space': 'nowrap',
+      //       // width: '100%'
+      //     }
+      // });
+      parent.appendChild(fileDiv);
     }
   });
-}
+
+};
 
 const wrap = DomFactory.create('div', {
   setStyles: {
     'font-family':
       'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
     'font-size': '0.8rem',
+    // width: '100%',
   },
-  
+
 });
 
-dirTreeDetails(dirTree, wrap)
+dirTreeDetails(dirTree, wrap);
 
 
 document.addEventListener('DOMContentLoaded', () => {

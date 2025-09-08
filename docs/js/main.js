@@ -11,6 +11,18 @@ const details = DomFactory.create('details', {
   appendChildren: [summary]
 });
 
+
+const summary1 = DomFactory.create('summary', {
+  textContent: 'fuga'
+});
+
+const details1 = DomFactory.create('details', {
+  appendChildren: [summary1]
+});
+
+details.appendChild(details1)
+
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
   document.body.appendChild(details);

@@ -1,7 +1,15 @@
 import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
+console.log(dirTree);
 
+const summary1 = DomFactory.create('summary', {
+  textContent: 'fuga'
+});
+
+const details1 = DomFactory.create('details', {
+  appendChildren: [summary1]
+});
 
 const summary = DomFactory.create('summary', {
   textContent: 'hoge'
@@ -12,15 +20,7 @@ const details = DomFactory.create('details', {
 });
 
 
-const summary1 = DomFactory.create('summary', {
-  textContent: 'fuga'
-});
-
-const details1 = DomFactory.create('details', {
-  appendChildren: [summary1]
-});
-
-details.appendChild(details1)
+details.appendChild(details1);
 
 
 document.addEventListener('DOMContentLoaded', () => {

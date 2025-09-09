@@ -54,8 +54,8 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
             type: 'click',
             listener: {
               handleEvent:  (e) => {
-                filePath = `./js/${treeNode.path}`;
-                getSource(`./js/${treeNode.path}`).then(res=>{
+                filePath = treeNode.path;
+                getSource(`./js/${filePath}`).then(res=>{
                   console.log(codeStr);
                   codeDiv.innerText = codeStr
                 });

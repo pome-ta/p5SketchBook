@@ -1,8 +1,14 @@
 import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
-
+let filePath;
 let codeStr;
+
+const getSource = async (path) => {
+  const res = await fetch(path);
+  const text = await res.text();
+  codeStr = text;
+}
 
 
 const dirTreeDetails = (treeNodes, parent, indent = 0) => {
@@ -48,14 +54,10 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
             type: 'click',
             listener: {
               handleEvent:  (e) => {
-                const filePath = `./js/${treeNode.path}`;
-                const getSource = async (path) => {
-                  const res = await fetch(path);
-                  const text = await res.text();
-                  codeStr = text;
-                }
-                getSource(filePath).then(res=>{
-                  console.log(codeStr)
+                filePath = `./js/${treeNode.path}`;
+                getSource(`./js/${treeNode.path}`).then(res=>{
+                  console.log(codeStr);
+                  codeDiv.innerText = codeStr
                 });
                 
               },
@@ -144,10 +146,23 @@ const dialog = DomFactory.create('dialog', {
 });
 
 
+const codeDiv = DomFactory.create('div', {
+  setStyles: {
+    'font-family':
+      'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
+    'font-size': '0.8rem',
+    //width: '100%',
+  },
+
+});
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
   document.body.appendChild(showButton);
   document.body.appendChild(dialog);
+  document.body.appendChild(codeDiv);
 
 });
 

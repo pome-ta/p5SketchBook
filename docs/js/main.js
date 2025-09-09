@@ -76,6 +76,31 @@ const wrap = DomFactory.create('div', {
 
 dirTreeDetails(dirTree, wrap);
 
+let sandbox,reloadSketchHandleEvent;
+
+const callButton = DomFactory.create('button', {
+  
+  setStyles: {
+    'border-radius': '0.5rem',
+    margin: '0.5rem 0',
+  },
+  appendChildren: [
+    DomFactory.create('p', {
+      textContent: '🔄',
+    }),
+  ],
+  addEventListeners: [
+    {
+      type: 'click',
+      listener: {
+        targetSandbox: sandbox,
+        handleEvent: reloadSketchHandleEvent,
+      },
+    },
+    
+  ],
+});
+
 const showButton = DomFactory.create('button', {
   setAttrs: {
     autofocus: true,
@@ -147,10 +172,18 @@ const codeDiv = DomFactory.create('div', {
   },
 });
 
+const buttonLayout = DomFactory.create('div', {
+  setStyles: {
+    'display': 'flex',
+    'justify-content': 'space-around',
+  },
+  appendChildren: [showButton, callButton],
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
-  document.body.appendChild(showButton);
+  document.body.appendChild(buttonLayout);
   document.body.appendChild(dialog);
-  document.body.appendChild(codeDiv);
+  //document.body.appendChild(codeDiv);
 });
 

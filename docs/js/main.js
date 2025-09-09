@@ -2,6 +2,9 @@ import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
 
+let codeStr;
+
+
 const dirTreeDetails = (treeNodes, parent, indent = 0) => {
   indent++;
   treeNodes.forEach((treeNode) => {
@@ -39,7 +42,26 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
         }
       });
       const fileDiv = DomFactory.create('div', {
-        appendChildren: [fileName,]
+        appendChildren: [fileName,],
+        addEventListeners: [
+          {
+            type: 'click',
+            listener: {
+              handleEvent:  (e) => {
+                const filePath = `./js/${treeNode.path}`;
+                const getSource = async (path) => {
+                  const res = await fetch(path);
+                  const text = await res.text();
+                  codeStr = text;
+                }
+                getSource(filePath).then(res=>{
+                  console.log(codeStr)
+                });
+                
+              },
+            },
+          }
+        ],
       });
       parent.appendChild(fileDiv);
     }
@@ -114,21 +136,18 @@ const dialog = DomFactory.create('dialog', {
       listener: {
         handleEvent: event => {
           dialog.close();
+          //console.log(codeStr)
         }
       }
     },
-
   ]
 });
-
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
   document.body.appendChild(showButton);
   document.body.appendChild(dialog);
-
 
 });
 

@@ -52,8 +52,13 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
               handleEvent: (e) => {
                 filePath = treeNode.path;
                 getSource(`./js/${filePath}`).then((res) => {
-                  console.log(codeStr);
+                  // console.log(codeStr);
                   codeDiv.innerText = codeStr;
+                  sandbox.contentWindow.postMessage(codeStr, '*');
+                  // console.log(sandbox);
+                  dialog.close();
+
+
                 });
               },
             },
@@ -76,10 +81,56 @@ const wrap = DomFactory.create('div', {
 
 dirTreeDetails(dirTree, wrap);
 
-let sandbox,reloadSketchHandleEvent;
+// xxx: iframe 生成時と書き換え時と併用
+const reloadSketchHandleEvent = function (e) {
+  this.targetSandbox = this.targetSandbox ? this.targetSandbox : e.target;
+  this.targetSandbox.contentWindow.postMessage(codeStr, '*');
+};
+
+/* --- iframe */
+const sandbox = DomFactory.create('iframe', {
+  setAttrs: {
+    id: 'sandbox',
+    sandbox: 'allow-same-origin allow-scripts',
+    allow:
+      'accelerometer; ambient-light-sensor; autoplay; bluetooth; camera; encrypted-media; geolocation; gyroscope;  hid; microphone; magnetometer; midi; payment; usb; serial; vr; xr-spatial-tracking',
+    loading: 'lazy',
+    src: './js/sandboxes/sandbox.html',
+  },
+  setStyles: {
+    width: '100%',
+    height: '100dvh',
+    'border-width': '0',
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    'z-index': '0',
+    //'background-color': 'lightgray',
+    'background-color': 'darkgray',
+  },
+  addEventListeners: [
+    {
+      type: 'load',
+      listener: {
+        targetSandbox: null,
+        handleEvent: reloadSketchHandleEvent,
+      },
+    },
+    /*
+    {
+      type: 'visibilitychange',
+      listener: {
+        handleEvent: function (e) {
+          console.log('visibilitychange');
+        },
+      },
+    },
+    */
+  ],
+});
 
 const callButton = DomFactory.create('button', {
-  
+
   setStyles: {
     'border-radius': '0.5rem',
     margin: '0.5rem 0',
@@ -97,7 +148,7 @@ const callButton = DomFactory.create('button', {
         handleEvent: reloadSketchHandleEvent,
       },
     },
-    
+
   ],
 });
 
@@ -176,14 +227,20 @@ const buttonLayout = DomFactory.create('div', {
   setStyles: {
     'display': 'flex',
     'justify-content': 'space-around',
+    position: 'sticky',
+    width: '100%',
+    top: '0',
+    'z-index': '1',
   },
   appendChildren: [showButton, callButton],
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
+  document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dialog);
+
   //document.body.appendChild(codeDiv);
 });
 

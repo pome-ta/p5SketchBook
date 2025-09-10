@@ -1,6 +1,19 @@
-const spectrumAnalyzerPath = '../../modules/spectrumAnalyzer.js';
+const v = 360;
+
+function setup() {
+  createCanvas(v, v);
+  colorMode(HSL, v, 1, 1);
+}
+
+function draw() {
+  background(frameCount % v, 1, 0.5);
+}
+
+
+/*
+const spectrumAnalyzerPath = '../sketchBooks/modules/spectrumAnalyzer.js';
 const interactionTraceKitPath =
-  '../../modules/interactionTraceKit.js';
+  '../sketchBooks/modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;
@@ -107,3 +120,4 @@ const sketch = (p) => {
 };
 
 new p5(sketch);
+*/

@@ -38,7 +38,7 @@ def build_tree(path: Path, root: str | None = None) -> FileNode:
 
 
 if __name__ == '__main__':
-  root_path_str = './docs/js'
+  root_path_str = './docs/'
   target_dir_str = 'sketchBooks'
   save_path_srt = './docs'
 

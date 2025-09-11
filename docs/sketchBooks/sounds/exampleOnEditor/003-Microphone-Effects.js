@@ -1,7 +1,6 @@
 // [p5.js Web Editor | 003-Microphone-Effects](https://editor.p5js.org/thomasjohnmartinez/sketches/5NV6gUkWM)
 
-const interactionTraceKitPath =
-  '../../sketchBooks/modules/interactionTraceKit.js';
+const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;

@@ -1,7 +1,6 @@
 // [p5.js-sound/examples/_monosynth_basic/sketch.js at main · processing/p5.js-sound · GitHub](https://github.com/processing/p5.js-sound/blob/main/examples/_monosynth_basic/sketch.js)
 
-const interactionTraceKitPath =
-  '../../sketchBooks/modules/interactionTraceKit.js';
+const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;

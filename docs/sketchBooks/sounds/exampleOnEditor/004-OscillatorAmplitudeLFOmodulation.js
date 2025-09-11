@@ -1,7 +1,6 @@
 // [p5.js Web Editor | 004-OscillatorAmplitudeLFOmodulation](https://editor.p5js.org/thomasjohnmartinez/sketches/9bsyBm86Q)
 
-const interactionTraceKitPath =
-  '../../sketchBooks/modules/interactionTraceKit.js';
+const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;

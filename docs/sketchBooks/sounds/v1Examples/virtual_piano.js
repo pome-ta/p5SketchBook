@@ -8,8 +8,7 @@
  * この例では、p5.PolySynth を使用して、ユーザー イベントによって瞬時に生成します。
  */
 
-const interactionTraceKitPath =
-  '../../sketchBooks/modules/interactionTraceKit.js';
+const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;

@@ -1,7 +1,7 @@
 // [p5.js-sound/examples/array_of_notes/sketch.js at main · processing/p5.js-sound · GitHub](https://github.com/processing/p5.js-sound/blob/main/examples/array_of_notes/sketch.js)
 
 const interactionTraceKitPath =
-  '../../sketchBooks/modules/interactionTraceKit.js';
+  'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;

@@ -10,7 +10,7 @@ const githubusercontent = (githubUrl) =>
     .replace('/blob/', '/');
 
 const interactionTraceKitPath =
-  '../../sketchBooks/modules/interactionTraceKit.js';
+  'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;

@@ -1,6 +1,9 @@
-const spectrumAnalyzerPath = '../../../sketchBooks/modules/spectrumAnalyzer.js';
-const interactionTraceKitPath =
-  '../../../sketchBooks/modules/interactionTraceKit.js';
+const spectrumAnalyzerPath = 'modules/spectrumAnalyzer.js';
+const interactionTraceKitPath ='modules/interactionTraceKit.js';
+
+//const spectrumAnalyzerPath = './modules/spectrumAnalyzer.js';
+//const interactionTraceKitPath ='./modules/interactionTraceKit.js';
+
 
 const sketch = (p) => {
   let w, h;

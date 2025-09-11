@@ -47,7 +47,7 @@ const sketch = (p) => {
 
   p.preload = () => {
     p.loadModule(interactionTraceKitPath, (m) => {
-      const { PointerTracker, TapIndicator } = m;
+      const {PointerTracker, TapIndicator} = m;
       pointerTracker = new PointerTracker(p);
       tapIndicator = new TapIndicator(p);
     });
@@ -109,12 +109,12 @@ const sketch = (p) => {
 
     description = p.createDiv(
       'p5.Compressor: <br>' +
-        "Adjust the knobs to control the compressor's " +
-        'attack, knee, ratio, release, and wet / dry values ' +
-        'Move the slider to adjust threshold.' +
-        'For information on these audioParams, see <br>' +
-        '<a href =https://www.w3.org/TR/webaudio/#the-dynamicscompressornode-interface>' +
-        'Web Audio Dyanmics Compressor Node Interface</a>'
+      'Adjust the knobs to control the compressor\'s ' +
+      'attack, knee, ratio, release, and wet / dry values ' +
+      'Move the slider to adjust threshold.' +
+      'For information on these audioParams, see <br>' +
+      '<a href =https://www.w3.org/TR/webaudio/#the-dynamicscompressornode-interface>' +
+      'Web Audio Dyanmics Compressor Node Interface</a>'
     );
     description.size(0.75 * fftWidth, p.AUTO);
     description.position(w - fftWidth, 1.15 * fftHeight);
@@ -171,7 +171,8 @@ const sketch = (p) => {
     }
   };
 
-  p.touchMoved = (e) => {};
+  p.touchMoved = (e) => {
+  };
 
   p.touchEnded = (e) => {
     pressed = false;

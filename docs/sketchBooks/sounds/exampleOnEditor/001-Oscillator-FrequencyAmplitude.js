@@ -1,5 +1,5 @@
 // [001-Oscillator-FrequencyAmplitude by thomasjohnmartinez -p5.js Web Editor](https://editor.p5js.org/thomasjohnmartinez/sketches/z-KkeTrcu)
-const interactionTraceKitPath ='modules/interactionTraceKit.js';
+const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;
@@ -12,7 +12,7 @@ const sketch = (p) => {
 
   p.preload = () => {
     p.loadModule(interactionTraceKitPath, (m) => {
-      const { PointerTracker } = m;
+      const {PointerTracker} = m;
       pointerTracker = new PointerTracker(p);
     });
   };

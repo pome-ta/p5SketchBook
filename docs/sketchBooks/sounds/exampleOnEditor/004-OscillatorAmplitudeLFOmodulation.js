@@ -13,7 +13,7 @@ const sketch = (p) => {
 
   p.preload = () => {
     p.loadModule(interactionTraceKitPath, (m) => {
-      const { PointerTracker } = m;
+      const {PointerTracker} = m;
       pointerTracker = new PointerTracker(p);
     });
   };

@@ -6,9 +6,18 @@
       name="viewport"
       content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
   />
+  
+  <script type="importmap">
+    {
+      "imports": {
+        "eruda": "https://esm.sh/eruda"
+      }
+    }
+  </script>
+
 
   <script type="module">
-    import eruda from 'https://esm.sh/eruda';
+    import eruda from 'eruda';
 
     eruda.init();
 

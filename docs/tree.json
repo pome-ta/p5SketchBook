@@ -23,8 +23,8 @@
             "path": "sketchBooks/sounds/exampleOnEditor/001-Oscillator-FrequencyAmplitude.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/exampleOnEditor",
-            "st_ctime": 1757585458.2910001,
-            "st_mtime": 1757585458.2904196,
+            "st_ctime": 1757601199.9031942,
+            "st_mtime": 1757601199.9031942,
             "children": null
           },
           {
@@ -43,8 +43,8 @@
             "path": "sketchBooks/sounds/exampleOnEditor/003-Microphone-Effects.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/exampleOnEditor",
-            "st_ctime": 1757585478.689659,
-            "st_mtime": 1757585478.6889656,
+            "st_ctime": 1757601199.9076636,
+            "st_mtime": 1757601199.9076636,
             "children": null
           },
           {
@@ -53,8 +53,8 @@
             "path": "sketchBooks/sounds/exampleOnEditor/004-OscillatorAmplitudeLFOmodulation.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/exampleOnEditor",
-            "st_ctime": 1757585489.956102,
-            "st_mtime": 1757585489.9554036,
+            "st_ctime": 1757601199.9118736,
+            "st_mtime": 1757601199.9118736,
             "children": null
           },
           {
@@ -73,8 +73,8 @@
             "path": "sketchBooks/sounds/exampleOnEditor/006-DelayTime-Envelope.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/exampleOnEditor",
-            "st_ctime": 1757585503.1219304,
-            "st_mtime": 1757585503.121328,
+            "st_ctime": 1757641841.3998346,
+            "st_mtime": 1757601199.9163184,
             "children": null
           },
           {
@@ -105,8 +105,8 @@
         "path": "sketchBooks/sounds/metronom.js",
         "suffix": ".js",
         "parent": "sketchBooks/sounds",
-        "st_ctime": 1757585154.773066,
-        "st_mtime": 1757585154.7717977,
+        "st_ctime": 1757601199.9201581,
+        "st_mtime": 1757601199.9201581,
         "children": null
       },
       {
@@ -115,8 +115,8 @@
         "path": "sketchBooks/sounds/v1Examples",
         "suffix": "",
         "parent": "sketchBooks/sounds",
-        "st_ctime": 1757585445.604824,
-        "st_mtime": 1757585445.604824,
+        "st_ctime": 1757687842.8582735,
+        "st_mtime": 1757687842.8582735,
         "children": [
           {
             "name": "Compressor.js",
@@ -124,8 +124,8 @@
             "path": "sketchBooks/sounds/v1Examples/Compressor.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757585387.31702,
-            "st_mtime": 1757585387.315742,
+            "st_ctime": 1757642410.0831065,
+            "st_mtime": 1757601199.9240108,
             "children": null
           },
           {
@@ -134,8 +134,18 @@
             "path": "sketchBooks/sounds/v1Examples/DelayNoiseEnvelope.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757585431.903126,
-            "st_mtime": 1757585431.9023893,
+            "st_ctime": 1757641830.6966498,
+            "st_mtime": 1757601199.926706,
+            "children": null
+          },
+          {
+            "name": "FFT_freqRange.js",
+            "type": "file",
+            "path": "sketchBooks/sounds/v1Examples/FFT_freqRange.js",
+            "suffix": ".js",
+            "parent": "sketchBooks/sounds/v1Examples",
+            "st_ctime": 1757687855.1684403,
+            "st_mtime": 1757687855.1587133,
             "children": null
           },
           {
@@ -144,8 +154,8 @@
             "path": "sketchBooks/sounds/v1Examples/_monosynth_basic.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757585350.5187237,
-            "st_mtime": 1757585350.5179877,
+            "st_ctime": 1757641812.2518308,
+            "st_mtime": 1757601199.9295194,
             "children": null
           },
           {
@@ -154,8 +164,8 @@
             "path": "sketchBooks/sounds/v1Examples/array_of_notes.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757585370.4009736,
-            "st_mtime": 1757585370.400236,
+            "st_ctime": 1757641815.686965,
+            "st_mtime": 1757601199.932832,
             "children": null
           },
           {
@@ -174,8 +184,8 @@
             "path": "sketchBooks/sounds/v1Examples/virtual_piano.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757585445.604824,
-            "st_mtime": 1757585445.6041024,
+            "st_ctime": 1757601199.935859,
+            "st_mtime": 1757601199.935859,
             "children": null
           }
         ]

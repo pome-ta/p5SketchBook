@@ -56,7 +56,7 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
                   codeDiv.innerText = codeStr;
                   sandbox.contentWindow.postMessage(codeStr, '*');
                   // console.log(sandbox);
-                  dialog.close();
+                  dirTreeDialog.close();
 
 
                 });
@@ -182,7 +182,7 @@ const closeButton = DomFactory.create('button', {
   ],
 });
 
-const dialog = DomFactory.create('dialog', {
+const dirTreeDialog = DomFactory.create('dialog', {
   setStyles: {
     width: '88%',
     height: '88%',
@@ -197,7 +197,7 @@ const dialog = DomFactory.create('dialog', {
       type: 'click',
       listener: {
         handleEvent: (event) => {
-          dialog.showModal();
+          dirTreeDialog.showModal();
         },
       },
     },
@@ -206,7 +206,7 @@ const dialog = DomFactory.create('dialog', {
       type: 'click',
       listener: {
         handleEvent: (event) => {
-          dialog.close();
+          dirTreeDialog.close();
           //console.log(codeStr)
         },
       },
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
   document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
-  document.body.appendChild(dialog);
+  document.body.appendChild(dirTreeDialog);
 
   //document.body.appendChild(codeDiv);
 });

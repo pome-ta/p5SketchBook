@@ -115,8 +115,8 @@
         "path": "sketchBooks/sounds/v1Examples",
         "suffix": "",
         "parent": "sketchBooks/sounds",
-        "st_ctime": 1757687842.8582735,
-        "st_mtime": 1757687842.8582735,
+        "st_ctime": 1757940863.108497,
+        "st_mtime": 1757940863.108497,
         "children": [
           {
             "name": "Compressor.js",
@@ -134,7 +134,7 @@
             "path": "sketchBooks/sounds/v1Examples/DelayNoiseEnvelope.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757641830.6966498,
+            "st_ctime": 1757910165.515005,
             "st_mtime": 1757601199.926706,
             "children": null
           },
@@ -144,8 +144,18 @@
             "path": "sketchBooks/sounds/v1Examples/FFT_freqRange.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757687855.1684403,
-            "st_mtime": 1757687855.1587133,
+            "st_ctime": 1757743588.4453661,
+            "st_mtime": 1757743588.4453661,
+            "children": null
+          },
+          {
+            "name": "Filter_BandPass.js",
+            "type": "file",
+            "path": "sketchBooks/sounds/v1Examples/Filter_BandPass.js",
+            "suffix": ".js",
+            "parent": "sketchBooks/sounds/v1Examples",
+            "st_ctime": 1757940903.4378955,
+            "st_mtime": 1757940878.9488006,
             "children": null
           },
           {
@@ -164,7 +174,7 @@
             "path": "sketchBooks/sounds/v1Examples/array_of_notes.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757641815.686965,
+            "st_ctime": 1757910539.0514815,
             "st_mtime": 1757601199.932832,
             "children": null
           },
@@ -184,7 +194,7 @@
             "path": "sketchBooks/sounds/v1Examples/virtual_piano.js",
             "suffix": ".js",
             "parent": "sketchBooks/sounds/v1Examples",
-            "st_ctime": 1757601199.935859,
+            "st_ctime": 1757865319.2499304,
             "st_mtime": 1757601199.935859,
             "children": null
           }

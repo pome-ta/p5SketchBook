@@ -1,6 +1,7 @@
 import DomFactory from './utils/domFactory.js';
 import dirTree from 'dirTree' with {type: 'json'};
 
+
 let filePath;
 let codeStr;
 
@@ -152,7 +153,7 @@ const callButton = DomFactory.create('button', {
   ],
 });
 
-const showButton = DomFactory.create('button', {
+const showDirTreeButton = DomFactory.create('button', {
   setAttrs: {
     autofocus: true,
   },
@@ -163,6 +164,21 @@ const showButton = DomFactory.create('button', {
   appendChildren: [
     DomFactory.create('p', {
       textContent: 'show directly tree',
+    }),
+  ],
+});
+
+const showSourceCodeButton = DomFactory.create('button', {
+  setAttrs: {
+    autofocus: true,
+  },
+  setStyles: {
+    'border-radius': '0.5rem',
+    margin: '0.5rem 0',
+  },
+  appendChildren: [
+    DomFactory.create('p', {
+      textContent: 'show source code',
     }),
   ],
 });
@@ -193,7 +209,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
   appendChildren: [closeButton, wrap],
   targetAddEventListeners: [
     {
-      target: showButton,
+      target: showDirTreeButton,
       type: 'click',
       listener: {
         handleEvent: (event) => {
@@ -214,6 +230,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
   ],
 });
 
+
 const codeDiv = DomFactory.create('div', {
   setStyles: {
     'font-family':
@@ -232,7 +249,7 @@ const buttonLayout = DomFactory.create('div', {
     top: '0',
     'z-index': '1',
   },
-  appendChildren: [showButton, callButton],
+  appendChildren: [showDirTreeButton, callButton, showSourceCodeButton,],
 });
 
 document.addEventListener('DOMContentLoaded', () => {

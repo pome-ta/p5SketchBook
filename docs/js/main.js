@@ -82,6 +82,7 @@ const wrap = DomFactory.create('div', {
     'font-size': '0.8rem',
     //width: '100%',
   },
+  addClassList: ['dialog-container', ],
 });
 
 dirTreeDetails(dirTree, wrap);
@@ -205,12 +206,24 @@ const closeDirTreeButton = DomFactory.create('button', {
 const dirTreeDialog = DomFactory.create('dialog', {
   setStyles: {
     width: '88%',
-    height: '88%',
+    height: '72%',
     border: 'none',
     'border-radius': '0.5rem',
     'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
   },
   appendChildren: [closeDirTreeButton, wrap],
+  addEventListeners: [
+    {
+      type: 'click',
+      listener: {
+        handleEvent: function (e) {
+          if (e.target.closest('.dialog-container') === null) {
+            dirTreeDialog.close();
+          }
+        }
+      },
+    },
+  ],
   targetAddEventListeners: [
     {
       target: showDirTreeButton,

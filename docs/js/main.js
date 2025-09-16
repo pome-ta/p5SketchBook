@@ -290,9 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);
-  document.body.appendChild(sourceCodeDialog);
   
-
-  //document.body.appendChild(codeDiv);
 });
 

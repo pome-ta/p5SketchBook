@@ -1,6 +1,10 @@
 import DomFactory from './utils/domFactory.js';
+import hljs from 'highlight.js/';
+import javascript from 'highlight.js/lib/languages/javascript';
 import dirTree from 'dirTree' with {type: 'json'};
 
+console.log(hljs);
+console.log(javascript);
 
 let filePath;
 let codeStr;
@@ -290,6 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);
-  
+
 });
 

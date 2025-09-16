@@ -79,8 +79,6 @@ const dirTreeWrap = DomFactory.create('div', {
 dirTreeDetails(dirTree, dirTreeWrap);
 
 
-
-
 const showDirTreeButton = DomFactory.create('button', {
   setAttrs: {
     autofocus: true,
@@ -142,7 +140,6 @@ const dirTreeDialog = DomFactory.create('dialog', {
     },
   ],
 });
-
 
 
 // export {dirTreeDialog, showDirTreeButton};

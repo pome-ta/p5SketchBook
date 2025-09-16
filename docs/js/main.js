@@ -183,7 +183,7 @@ const showSourceCodeButton = DomFactory.create('button', {
   ],
 });
 
-const closeButton = DomFactory.create('button', {
+const closeDirTreeButton = DomFactory.create('button', {
   setAttrs: {
     autofocus: true,
   },
@@ -206,7 +206,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
     'border-radius': '0.5rem',
     'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
   },
-  appendChildren: [closeButton, wrap],
+  appendChildren: [closeDirTreeButton, wrap],
   targetAddEventListeners: [
     {
       target: showDirTreeButton,
@@ -218,7 +218,40 @@ const dirTreeDialog = DomFactory.create('dialog', {
       },
     },
     {
-      target: closeButton,
+      target: closeDirTreeButton,
+      type: 'click',
+      listener: {
+        handleEvent: (event) => {
+          dirTreeDialog.close();
+          //console.log(codeStr)
+        },
+      },
+    },
+  ],
+});
+
+
+const sourceCodeDialog = DomFactory.create('dialog', {
+  setStyles: {
+    width: '88%',
+    height: '88%',
+    border: 'none',
+    'border-radius': '0.5rem',
+    'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
+  },
+  //appendChildren: [closeDirTreeButton, wrap],
+  targetAddEventListeners: [
+    {
+      target: showDirTreeButton,
+      type: 'click',
+      listener: {
+        handleEvent: (event) => {
+          dirTreeDialog.showModal();
+        },
+      },
+    },
+    {
+      target: closeDirTreeButton,
       type: 'click',
       listener: {
         handleEvent: (event) => {
@@ -257,6 +290,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);
+  document.body.appendChild(sourceCodeDialog);
+  
 
   //document.body.appendChild(codeDiv);
 });

@@ -79,7 +79,7 @@ export default class SourceCodeElement {
           listener: {
             handleEvent: (event) => {
               dialog.close();
-              console.log(this.#codeStr)
+              console.log(document.querySelector('#code-pre'))
             },
           },
         },

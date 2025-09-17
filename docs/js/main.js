@@ -11,6 +11,31 @@ console.log(javascript);
 let filePath;
 let codeStr;
 
+const hiddenDiv = DomFactory.create('div', {
+  setAttrs: {
+    id: 'hidden-div',
+  },
+  setStyles: {
+    'display': 'none',
+  },
+  appendChildren: [
+    DomFactory.create('p', {
+      setAttrs: {
+        id: 'uri-p',
+      },
+      textContent: '',
+    }),
+    DomFactory.create('pre', {
+      setAttrs: {
+        id: 'code-pre',
+      },
+      textContent: '',
+    }),
+    
+  ],
+  
+});
+
 const getSource = async (path) => {
   const res = await fetch(path);
   codeStr = await res.text();
@@ -60,7 +85,9 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
                 filePath = treeNode.path;
                 getSource(`./${filePath}`).then((res) => {
                   // console.log(codeStr);
-                  codeDiv.innerText = codeStr;
+                  const codepre =document.querySelector('#code-pre');
+                  codepre.innerText = codeStr;
+                  //codeDiv.innerText = codeStr;
                   sandbox.contentWindow.postMessage(codeStr, '*');
                   // console.log(sandbox);
                   dirTreeDialog.close();
@@ -240,14 +267,6 @@ const dirTreeDialog = DomFactory.create('dialog', {
 
 
 
-const codeDiv = DomFactory.create('div', {
-  setStyles: {
-    'font-family':
-      'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
-    'font-size': '0.8rem',
-    //width: '100%',
-  },
-});
 
 
 const sc = new SourceCodeElement(codeStr);
@@ -265,8 +284,11 @@ const buttonLayout = DomFactory.create('div', {
   appendChildren: [showDirTreeButton, callButton, sc.showButton,],
 });
 
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
+  
+  document.body.appendChild(hiddenDiv);
   document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);

@@ -1,7 +1,7 @@
 import DomFactory from './utils/domFactory.js';
 import hljs from 'highlight.js/';
 import javascript from 'highlight.js/lib/languages/javascript';
-import dirTree from 'dirTree' with {type: 'json'};
+import dirTreeJson from 'dirTree' with {type: 'json'};
 
 console.log(hljs);
 console.log(javascript);
@@ -85,7 +85,7 @@ const wrap = DomFactory.create('div', {
   addClassList: ['dialog-container', ],
 });
 
-dirTreeDetails(dirTree, wrap);
+dirTreeDetails(dirTreeJson, wrap);
 
 // xxx: iframe 生成時と書き換え時と併用
 const reloadSketchHandleEvent = function (e) {

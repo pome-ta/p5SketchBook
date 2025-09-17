@@ -142,4 +142,8 @@ const dirTreeDialog = DomFactory.create('dialog', {
 });
 
 
+const createDirTreeDialog = () => {
+}
+
+
 // export {dirTreeDialog, showDirTreeButton};

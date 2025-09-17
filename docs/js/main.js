@@ -1,4 +1,6 @@
 import DomFactory from './utils/domFactory.js';
+import SourceCodeElement from './sourceCodeElement.js';
+
 import hljs from 'highlight.js/';
 import javascript from 'highlight.js/lib/languages/javascript';
 import dirTreeJson from 'dirTree' with {type: 'json'};
@@ -211,6 +213,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
     'border-radius': '0.5rem',
     'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
   },
+  //addClassList: ['dialog-container', ],
   appendChildren: [closeDirTreeButton, wrap],
   addEventListeners: [
     {
@@ -240,7 +243,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
       listener: {
         handleEvent: (event) => {
           dirTreeDialog.close();
-          //console.log(codeStr)
+          console.log(this)
         },
       },
     },
@@ -290,6 +293,10 @@ const codeDiv = DomFactory.create('div', {
   },
 });
 
+
+const sc = new SourceCodeElement();
+
+
 const buttonLayout = DomFactory.create('div', {
   setStyles: {
     'display': 'flex',
@@ -299,7 +306,7 @@ const buttonLayout = DomFactory.create('div', {
     top: '0',
     'z-index': '1',
   },
-  appendChildren: [showDirTreeButton, callButton, showSourceCodeButton,],
+  appendChildren: [showDirTreeButton, callButton, sc.showButton,],
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -307,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);
+  document.body.appendChild(sc.dialog);
 
 });
 

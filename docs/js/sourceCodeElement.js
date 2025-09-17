@@ -1,10 +1,14 @@
 import DomFactory from './utils/domFactory.js';
 
+import hljs from 'highlight.js/';
+import javascript from 'highlight.js/lib/languages/javascript';
+
 export default class SourceCodeElement {
   #dialog;
   #showButton;
-  constructor() {
-  
+  #codeStr;
+  constructor(codeStr) {
+    this.#codeStr = codeStr;
     this.#showButton = this.#createShowButton();
     this.#dialog = this.#createDialog();
   }
@@ -75,6 +79,7 @@ export default class SourceCodeElement {
           listener: {
             handleEvent: (event) => {
               dialog.close();
+              console.log(this.#codeStr)
             },
           },
         },

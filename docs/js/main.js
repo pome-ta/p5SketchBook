@@ -175,20 +175,7 @@ const showDirTreeButton = DomFactory.create('button', {
   ],
 });
 
-const showSourceCodeButton = DomFactory.create('button', {
-  setAttrs: {
-    autofocus: true,
-  },
-  setStyles: {
-    'border-radius': '0.5rem',
-    margin: '0.5rem 0',
-  },
-  appendChildren: [
-    DomFactory.create('p', {
-      textContent: 'show source code',
-    }),
-  ],
-});
+
 
 const closeDirTreeButton = DomFactory.create('button', {
   setAttrs: {
@@ -251,37 +238,6 @@ const dirTreeDialog = DomFactory.create('dialog', {
 });
 
 
-const sourceCodeDialog = DomFactory.create('dialog', {
-  setStyles: {
-    width: '88%',
-    height: '88%',
-    border: 'none',
-    'border-radius': '0.5rem',
-    'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
-  },
-  //appendChildren: [closeDirTreeButton, wrap],
-  targetAddEventListeners: [
-    {
-      target: showDirTreeButton,
-      type: 'click',
-      listener: {
-        handleEvent: (event) => {
-          dirTreeDialog.showModal();
-        },
-      },
-    },
-    {
-      target: closeDirTreeButton,
-      type: 'click',
-      listener: {
-        handleEvent: (event) => {
-          dirTreeDialog.close();
-          //console.log(codeStr)
-        },
-      },
-    },
-  ],
-});
 
 
 const codeDiv = DomFactory.create('div', {
@@ -294,7 +250,7 @@ const codeDiv = DomFactory.create('div', {
 });
 
 
-const sc = new SourceCodeElement();
+const sc = new SourceCodeElement(codeStr);
 
 
 const buttonLayout = DomFactory.create('div', {

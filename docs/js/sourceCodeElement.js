@@ -6,16 +6,15 @@ import javascript from 'highlight.js/lib/languages/javascript';
 export default class SourceCodeElement {
   #dialog;
   #showButton;
-  #codeStr;
-  constructor(codeStr) {
-    this.#codeStr = codeStr;
+  #querySel;
+  #viewBody;
+  constructor(querySel) {
+    this.#querySel = querySel;
     this.#showButton = this.#createShowButton();
     this.#dialog = this.#createDialog();
   }
   
   #createDialog() {
-  
-  
     const wrap = DomFactory.create('div', {
       setStyles: {
         'font-family':
@@ -79,7 +78,7 @@ export default class SourceCodeElement {
           listener: {
             handleEvent: (event) => {
               dialog.close();
-              console.log(document.querySelector('#code-pre'))
+              console.log(document.querySelector(this.#querySel).innerText)
             },
           },
         },

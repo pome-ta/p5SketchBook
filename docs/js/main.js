@@ -23,13 +23,11 @@ const hiddenDiv = DomFactory.create('div', {
       setAttrs: {
         id: 'uri-p',
       },
-      textContent: '',
     }),
     DomFactory.create('pre', {
       setAttrs: {
         id: 'code-pre',
       },
-      textContent: '',
     }),
     
   ],
@@ -83,9 +81,11 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
             listener: {
               handleEvent: (e) => {
                 filePath = treeNode.path;
+                const urip = document.querySelector('#uri-p');
+                urip.innerText = filePath;
                 getSource(`./${filePath}`).then((res) => {
                   // console.log(codeStr);
-                  const codepre =document.querySelector('#code-pre');
+                  const codepre = document.querySelector('#code-pre');
                   codepre.innerText = codeStr;
                   //codeDiv.innerText = codeStr;
                   sandbox.contentWindow.postMessage(codeStr, '*');
@@ -269,7 +269,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
 
 
 
-const sc = new SourceCodeElement(codeStr);
+const sc = new SourceCodeElement('#code-pre');
 
 
 const buttonLayout = DomFactory.create('div', {

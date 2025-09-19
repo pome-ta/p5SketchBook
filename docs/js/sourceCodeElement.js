@@ -3,7 +3,6 @@ import DomFactory from './utils/domFactory.js';
 import hljs from 'highlight.js/';
 import javascript from 'highlight.js/lib/languages/javascript';
 
-import 'highlight.js/styles/default.css';
 
 
 hljs.registerLanguage('javascript', javascript);

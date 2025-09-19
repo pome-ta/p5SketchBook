@@ -11,14 +11,17 @@ export default class SourceCodeElement {
   #showButton;
   #querySel;
   #hljsValue;
+  #preTag;
   constructor(querySel) {
     this.#querySel = querySel;
     this.#hljsValue = '';
+    this.#preTag = DomFactory.create('pre');
     this.#showButton = this.#createShowButton();
     this.#dialog = this.#createDialog();
   }
   
   #createDialog() {
+    /*
     const wrap = DomFactory.create('div', {
       setStyles: {
         'font-family':
@@ -28,6 +31,20 @@ export default class SourceCodeElement {
       },
       addClassList: ['dialog-container', ],
     });
+    */
+    
+    const wrapper = DomFactory.create('div', {
+      addClassList: ['dialog-container', ],
+      appendChildren: [
+        DomFactory.create('code', {
+          appendChildren: [
+            this.#preTag,
+          ],
+        }),
+      ],
+    });
+    
+    
 
 
     const closeButton = DomFactory.create('button', {
@@ -53,7 +70,7 @@ export default class SourceCodeElement {
         'border-radius': '0.5rem',
         'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
       },
-      appendChildren: [closeButton, wrap],
+      appendChildren: [closeButton, wrapper],
       addEventListeners: [
         {
           type: 'click',
@@ -72,11 +89,10 @@ export default class SourceCodeElement {
           type: 'click',
           listener: {
             handleEvent: (event) => {
-              
               const codeStr = document.querySelector(this.#querySel).innerText;
               const highlightedCode = hljs.highlightAuto(codeStr).value
 
-              console.log(highlightedCode)
+              this.#preTag.innerHTML = highlightedCode;
               dialog.showModal();
             },
           },

@@ -3,13 +3,17 @@ import DomFactory from './utils/domFactory.js';
 import hljs from 'highlight.js/';
 import javascript from 'highlight.js/lib/languages/javascript';
 
+
+hljs.registerLanguage('javascript', javascript);
+
 export default class SourceCodeElement {
   #dialog;
   #showButton;
   #querySel;
-  #viewBody;
+  #hljsValue;
   constructor(querySel) {
     this.#querySel = querySel;
+    this.#hljsValue = '';
     this.#showButton = this.#createShowButton();
     this.#dialog = this.#createDialog();
   }
@@ -68,6 +72,11 @@ export default class SourceCodeElement {
           type: 'click',
           listener: {
             handleEvent: (event) => {
+              
+              const codeStr = document.querySelector(this.#querySel).innerText;
+              const highlightedCode = hljs.highlightAuto(codeStr).value
+
+              console.log(highlightedCode)
               dialog.showModal();
             },
           },
@@ -78,7 +87,7 @@ export default class SourceCodeElement {
           listener: {
             handleEvent: (event) => {
               dialog.close();
-              console.log(document.querySelector(this.#querySel).innerText)
+              //console.log(document.querySelector(this.#querySel).innerText)
             },
           },
         },

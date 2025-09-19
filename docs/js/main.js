@@ -1,12 +1,12 @@
 import DomFactory from './utils/domFactory.js';
 import SourceCodeElement from './sourceCodeElement.js';
 
-import hljs from 'highlight.js/';
-import javascript from 'highlight.js/lib/languages/javascript';
+//import hljs from 'highlight.js/';
+//import javascript from 'highlight.js/lib/languages/javascript';
 import dirTreeJson from 'dirTree' with {type: 'json'};
 
-console.log(hljs);
-console.log(javascript);
+//console.log(hljs);
+//console.log(javascript);
 
 let filePath;
 let codeStr;

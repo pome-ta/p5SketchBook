@@ -50,7 +50,6 @@ export default class SourceCodeElement {
       },
       setStyles: {
         'border-radius': '0.5rem',
-        margin: '0.5rem 0',
       },
       appendChildren: [
         DomFactory.create('p', {
@@ -62,7 +61,6 @@ export default class SourceCodeElement {
     const copyButton = DomFactory.create('button', {
       setStyles: {
         'border-radius': '0.5rem',
-        margin: '0.5rem 0',
       },
       appendChildren: [
         DomFactory.create('p', {
@@ -81,9 +79,20 @@ export default class SourceCodeElement {
         'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
       },
       appendChildren: [
-        closeButton,
+        DomFactory.create('div', {
+          setStyles: {
+            margin: '0.5rem 0',
+            'display': 'flex',
+            'justify-content': 'space-between',
+          },
+          appendChildren: [
+            closeButton,
+            copyButton,
+          ]
+        }),
         wrapper,
       ],
+      /*
       addEventListeners: [
         {
           type: 'click',
@@ -96,6 +105,7 @@ export default class SourceCodeElement {
           },
         },
       ],
+      */
       targetAddEventListeners: [
         {
           target: this.#showButton,

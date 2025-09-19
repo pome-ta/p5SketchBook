@@ -4,18 +4,18 @@ import hljs from 'highlight.js/';
 import javascript from 'highlight.js/lib/languages/javascript';
 
 
-
 hljs.registerLanguage('javascript', javascript);
 
 export default class SourceCodeElement {
   #dialog;
   #showButton;
-  #querySel;
-  #hljsValue;
+  #getItemId;
+  #codeStr;
   #preTag;
-  constructor(querySel) {
-    this.#querySel = querySel;
-    this.#hljsValue = '';
+
+  constructor(getItemId) {
+    this.#getItemId = getItemId;
+    this.#codeStr = '';
     this.#preTag = DomFactory.create('pre', {
       setStyles: {
         'font-family':
@@ -27,23 +27,16 @@ export default class SourceCodeElement {
     this.#showButton = this.#createShowButton();
     this.#dialog = this.#createDialog();
   }
-  
+
+  get dialog() {
+    return this.#dialog;
+  }
+
+  get showButton() {
+    return this.#showButton;
+  }
+
   #createDialog() {
-    
-    const wrapper = DomFactory.create('div', {
-      addClassList: ['dialog-container', ],
-      appendChildren: [
-        DomFactory.create('code', {
-          appendChildren: [
-            this.#preTag,
-          ],
-        }),
-      ],
-    });
-    
-    
-
-
     const closeButton = DomFactory.create('button', {
       setAttrs: {
         autofocus: true,
@@ -57,7 +50,7 @@ export default class SourceCodeElement {
         }),
       ],
     });
-    
+
     const copyButton = DomFactory.create('button', {
       setStyles: {
         'border-radius': '0.5rem',
@@ -67,17 +60,22 @@ export default class SourceCodeElement {
           textContent: 'copy',
         }),
       ],
+
+      addEventListeners: [
+        {
+          type: 'click',
+          listener: {
+            handleEvent: (e) => {
+              console.log('copy');
+              navigator.clipboard.writeText(this.#codeStr);
+            },
+          },
+        },
+      ],
     });
-    
-    
-    const dialog = DomFactory.create('dialog', {
-      setStyles: {
-        width: '88%',
-        height: '72%',
-        border: 'none',
-        'border-radius': '0.5rem',
-        'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
-      },
+
+    const wrapper = DomFactory.create('div', {
+      addClassList: ['dialog-container',],
       appendChildren: [
         DomFactory.create('div', {
           setStyles: {
@@ -90,9 +88,27 @@ export default class SourceCodeElement {
             copyButton,
           ]
         }),
-        wrapper,
+        DomFactory.create('code', {
+          appendChildren: [
+            this.#preTag,
+          ],
+        }),
+      ]
+    });
+
+
+    const dialog = DomFactory.create('dialog', {
+      setStyles: {
+        width: '88%',
+        height: '72%',
+        border: 'none',
+        'border-radius': '0.5rem',
+        'box-shadow': '0 4px 16px rgba(0 0 0 / 16%)',
+      },
+      appendChildren: [
+        wrapper
       ],
-      /*
+
       addEventListeners: [
         {
           type: 'click',
@@ -105,17 +121,19 @@ export default class SourceCodeElement {
           },
         },
       ],
-      */
+
       targetAddEventListeners: [
         {
           target: this.#showButton,
           type: 'click',
           listener: {
             handleEvent: (event) => {
-              const codeStr = document.querySelector(this.#querySel).innerText;
-              this.#hljsValue = hljs.highlightAuto(codeStr).value
-
-              this.#preTag.innerHTML = this.#hljsValue;
+              const codeStr = sessionStorage.getItem(this.#getItemId);
+              if (codeStr === null) {
+                return;
+              }
+              this.#codeStr = codeStr;
+              this.#preTag.innerHTML = hljs.highlightAuto(codeStr).value;
               dialog.showModal();
             },
           },
@@ -126,19 +144,15 @@ export default class SourceCodeElement {
           listener: {
             handleEvent: (event) => {
               dialog.close();
-              //console.log(document.querySelector(this.#querySel).innerText)
             },
           },
         },
       ],
     });
-
     return dialog;
-    
   }
-  
-  #createShowButton() {
 
+  #createShowButton() {
     const showButton = DomFactory.create('button', {
       setAttrs: {
         autofocus: true,
@@ -154,13 +168,6 @@ export default class SourceCodeElement {
       ],
     });
     return showButton;
-  }
-  
-  get dialog() {
-    return this.#dialog;
-  }
-  get showButton() {
-    return this.#showButton;
   }
 }
 

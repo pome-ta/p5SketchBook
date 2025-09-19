@@ -1,38 +1,12 @@
 import DomFactory from './utils/domFactory.js';
 import SourceCodeElement from './sourceCodeElement.js';
 
-//import hljs from 'highlight.js/';
-//import javascript from 'highlight.js/lib/languages/javascript';
 import dirTreeJson from 'dirTree' with {type: 'json'};
 
-//console.log(hljs);
-//console.log(javascript);
 
 let filePath;
 let codeStr;
 
-const hiddenDiv = DomFactory.create('div', {
-  setAttrs: {
-    id: 'hidden-div',
-  },
-  setStyles: {
-    'display': 'none',
-  },
-  appendChildren: [
-    DomFactory.create('p', {
-      setAttrs: {
-        id: 'uri-p',
-      },
-    }),
-    DomFactory.create('pre', {
-      setAttrs: {
-        id: 'code-pre',
-      },
-    }),
-    
-  ],
-  
-});
 
 const getSource = async (path) => {
   const res = await fetch(path);
@@ -81,17 +55,10 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
             listener: {
               handleEvent: (e) => {
                 filePath = treeNode.path;
-                const urip = document.querySelector('#uri-p');
-                urip.innerText = filePath;
                 getSource(`./${filePath}`).then((res) => {
-                  // console.log(codeStr);
-                  const codepre = document.querySelector('#code-pre');
-                  codepre.innerText = codeStr;
-                  //codeDiv.innerText = codeStr;
+                  sessionStorage.setItem('codeStr', codeStr);
                   sandbox.contentWindow.postMessage(codeStr, '*');
-                  // console.log(sandbox);
                   dirTreeDialog.close();
-
 
                 });
               },
@@ -111,7 +78,7 @@ const wrap = DomFactory.create('div', {
     'font-size': '0.8rem',
     //width: '100%',
   },
-  addClassList: ['dialog-container', ],
+  addClassList: ['dialog-container',],
 });
 
 dirTreeDetails(dirTreeJson, wrap);
@@ -203,7 +170,6 @@ const showDirTreeButton = DomFactory.create('button', {
 });
 
 
-
 const closeDirTreeButton = DomFactory.create('button', {
   setAttrs: {
     autofocus: true,
@@ -257,7 +223,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
       listener: {
         handleEvent: (event) => {
           dirTreeDialog.close();
-          console.log(this)
+          console.log(this);
         },
       },
     },
@@ -265,11 +231,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
 });
 
 
-
-
-
-
-const sc = new SourceCodeElement('#code-pre');
+const sc = new SourceCodeElement('codeStr');
 
 
 const buttonLayout = DomFactory.create('div', {
@@ -287,8 +249,7 @@ const buttonLayout = DomFactory.create('div', {
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded');
-  
-  document.body.appendChild(hiddenDiv);
+
   document.body.appendChild(sandbox);
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);

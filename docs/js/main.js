@@ -8,6 +8,7 @@ let filePath;
 let codeStr;
 
 const codeStrId = 'codeStr';
+sessionStorage.setItem(codeStrId, '');
 
 
 const getSource = async (path) => {

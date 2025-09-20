@@ -110,8 +110,8 @@ const sandbox = DomFactory.create('iframe', {
     top: '0',
     left: '0',
     'z-index': '0',
-    //'background-color': 'lightgray',
-    'background-color': 'darkgray',
+    'background-color': 'lightgray',
+    //'background-color': 'darkgray',
   },
   addEventListeners: [
     {
@@ -135,7 +135,6 @@ const sandbox = DomFactory.create('iframe', {
 });
 
 const callButton = DomFactory.create('button', {
-
   setStyles: {
     'border-radius': '0.5rem',
     margin: '0.5rem 0',
@@ -257,6 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);
   document.body.appendChild(sc.dialog);
+  
 
+});
+
+window.addEventListener('load', (e) => {
+  dirTreeDialog.showModal();
 });
 

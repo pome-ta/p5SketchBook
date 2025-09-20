@@ -1,11 +1,13 @@
 import DomFactory from './utils/domFactory.js';
 import SourceCodeElement from './sourceCodeElement.js';
 
-import dirTreeJson from 'dirTree' with {type: 'json'};
+import jsonDirTree from 'dirTree' with {type: 'json'};
 
 
 let filePath;
 let codeStr;
+
+const codeStrId = 'codeStr';
 
 
 const getSource = async (path) => {
@@ -56,7 +58,7 @@ const dirTreeDetails = (treeNodes, parent, indent = 0) => {
               handleEvent: (e) => {
                 filePath = treeNode.path;
                 getSource(`./${filePath}`).then((res) => {
-                  sessionStorage.setItem('codeStr', codeStr);
+                  sessionStorage.setItem(codeStrId, codeStr);
                   sandbox.contentWindow.postMessage(codeStr, '*');
                   dirTreeDialog.close();
 
@@ -81,7 +83,7 @@ const wrap = DomFactory.create('div', {
   addClassList: ['dialog-container',],
 });
 
-dirTreeDetails(dirTreeJson, wrap);
+dirTreeDetails(jsonDirTree, wrap);
 
 // xxx: iframe 生成時と書き換え時と併用
 const reloadSketchHandleEvent = function (e) {
@@ -231,7 +233,7 @@ const dirTreeDialog = DomFactory.create('dialog', {
 });
 
 
-const sc = new SourceCodeElement('codeStr');
+const sc = new SourceCodeElement(codeStrId);
 
 
 const buttonLayout = DomFactory.create('div', {

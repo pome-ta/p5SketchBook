@@ -225,7 +225,6 @@ const dirTreeDialog = DomFactory.create('dialog', {
       listener: {
         handleEvent: (event) => {
           dirTreeDialog.close();
-          console.log(this);
         },
       },
     },

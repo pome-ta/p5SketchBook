@@ -7,11 +7,11 @@ import javascript from 'highlight.js/lib/languages/javascript';
 hljs.registerLanguage('javascript', javascript);
 
 export default class SourceCodeElement {
-  #dialog;
-  #showButton;
   #getItemId;
   #codeStr;
   #preTag;
+  #dialog;
+  #showButton;
 
   constructor(getItemId) {
     this.#getItemId = getItemId;
@@ -79,9 +79,11 @@ export default class SourceCodeElement {
       appendChildren: [
         DomFactory.create('div', {
           setStyles: {
-            margin: '0.5rem 0',
+            //margin: '0.5rem 0',
             'display': 'flex',
             'justify-content': 'space-between',
+            position: 'sticky',
+            top: 0,
           },
           appendChildren: [
             closeButton,

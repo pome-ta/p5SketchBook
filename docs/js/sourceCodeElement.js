@@ -8,32 +8,57 @@ import {oneDark} from '@codemirror/theme-one-dark';
 import { basicSetup} from 'codemirror';
 
 
-import hljs from 'highlight.js/';
-import javascript from 'highlight.js/lib/languages/javascript';
+const customTheme = EditorView.theme(
+  {
+    '&': {
+        fontSize: '0.6rem', //fontSize: '1rem',
+    },
+    '.cm-scroller': {
+      fontFamily:
+        'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
+    },
+    // `highlightWhitespace` 調整
+    '.cm-highlightSpace': {
+      backgroundImage:
+        'radial-gradient(circle at 50% 55%, #ababab 4%, transparent 24%)',
+      opacity: 0.2,
+    },
+
+      
+  },
+  {dark: false},  // wip: ?
+);
+
+const extensions = [
+  basicSetup,
+  EditorView.lineWrapping,
+  EditorState.readOnly.of(true),
+  EditorView.editable.of(false),
+  highlightWhitespace(),
+  javascript(),
+  customTheme,
+  oneDark,
+];
 
 
-hljs.registerLanguage('javascript', javascript);
+
+
 
 export default class SourceCodeElement {
   #getItemId;
   #codeStr;
-  #preTag;
   #editorWrap;
-  #view
+  #editorView;
   #dialog;
   #showButton;
 
   constructor(getItemId) {
     this.#getItemId = getItemId;
     this.#codeStr = '';
-    this.#preTag = DomFactory.create('pre', {
-      setStyles: {
-        'font-family':
-          'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
-        'font-size': '0.6rem',
-        'white-space': 'pre-wrap',
-      },
-    });
+    
+    this.#editorWrap = DomFactory.create('div');
+    
+    this.#editorView = this.#createEditor();
     this.#showButton = this.#createShowButton();
     this.#dialog = this.#createDialog();
   }
@@ -44,6 +69,19 @@ export default class SourceCodeElement {
 
   get showButton() {
     return this.#showButton;
+  }
+  
+  #createEditor() {
+    const state = EditorState.create({
+      extensions: extensions,
+    });
+    
+    const view = new EditorView({
+      state: state,
+      parent: this.#editorWrap,
+    });
+    
+    return view;
   }
 
   #createDialog() {
@@ -100,11 +138,7 @@ export default class SourceCodeElement {
             copyButton,
           ]
         }),
-        DomFactory.create('code', {
-          appendChildren: [
-            this.#preTag,
-          ],
-        }),
+        this.#editorWrap,
       ]
     });
 
@@ -145,7 +179,9 @@ export default class SourceCodeElement {
                 return;
               }
               this.#codeStr = codeStr;
-              this.#preTag.innerHTML = hljs.highlightAuto(codeStr).value;
+              this.#editorView.dispatch({
+                changes: {from: 0, to:this.#editorView.state.doc.length, insert: this.#codeStr},
+              });
               dialog.showModal();
             },
           },

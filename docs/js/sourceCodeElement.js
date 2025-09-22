@@ -1,5 +1,13 @@
 import DomFactory from './utils/domFactory.js';
 
+import {EditorState} from '@codemirror/state';
+import {EditorView, highlightWhitespace} from '@codemirror/view';
+import {javascript} from '@codemirror/lang-javascript';
+import {oneDark} from '@codemirror/theme-one-dark';
+
+import { basicSetup} from 'codemirror';
+
+
 import hljs from 'highlight.js/';
 import javascript from 'highlight.js/lib/languages/javascript';
 
@@ -10,6 +18,8 @@ export default class SourceCodeElement {
   #getItemId;
   #codeStr;
   #preTag;
+  #editorWrap;
+  #view
   #dialog;
   #showButton;
 

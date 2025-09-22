@@ -256,10 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(dirTreeDialog);
   document.body.appendChild(sc.dialog);
   
+  dirTreeDialog.showModal();
+  
 
 });
-
+/*
 window.addEventListener('load', (e) => {
+  console.log(sandbox)
   dirTreeDialog.showModal();
 });
+*/
 

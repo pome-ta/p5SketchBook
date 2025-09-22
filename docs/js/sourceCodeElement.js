@@ -41,9 +41,6 @@ const extensions = [
 ];
 
 
-
-
-
 export default class SourceCodeElement {
   #getItemId;
   #codeStr;
@@ -56,7 +53,11 @@ export default class SourceCodeElement {
     this.#getItemId = getItemId;
     this.#codeStr = '';
     
-    this.#editorWrap = DomFactory.create('div');
+    this.#editorWrap = DomFactory.create('div', {
+      setStyles: {
+        'margin': '0',
+      },
+    });
     
     this.#editorView = this.#createEditor();
     this.#showButton = this.#createShowButton();
@@ -125,14 +126,16 @@ export default class SourceCodeElement {
     const wrapper = DomFactory.create('div', {
       addClassList: ['dialog-container',],
       appendChildren: [
+        
         DomFactory.create('div', {
           setStyles: {
             //margin: '0.5rem 0',
             'display': 'flex',
             'justify-content': 'space-between',
-            position: 'sticky',
-            top: 0,
+            //position: 'sticky',
+            //top: 0,
           },
+          
           appendChildren: [
             closeButton,
             copyButton,

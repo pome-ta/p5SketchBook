@@ -36,8 +36,9 @@ const extensions = [
   EditorView.editable.of(false),
   highlightWhitespace(),
   javascript(),
-  customTheme,
+  
   oneDark,
+  customTheme,
 ];
 
 
@@ -55,7 +56,10 @@ export default class SourceCodeElement {
     
     this.#editorWrap = DomFactory.create('div', {
       setStyles: {
-        'margin': '0',
+        //'margin': '0',
+        //width: '88%',
+        //height: '72%',
+        overflow:'scroll',
       },
     });
     
@@ -92,6 +96,7 @@ export default class SourceCodeElement {
       },
       setStyles: {
         'border-radius': '0.5rem',
+        //overflow: 'hidden',
       },
       appendChildren: [
         DomFactory.create('p', {

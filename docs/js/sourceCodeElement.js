@@ -5,13 +5,13 @@ import {EditorView, highlightWhitespace} from '@codemirror/view';
 import {javascript} from '@codemirror/lang-javascript';
 import {oneDark} from '@codemirror/theme-one-dark';
 
-import { basicSetup} from 'codemirror';
+import {basicSetup} from 'codemirror';
 
 
 const customTheme = EditorView.theme(
   {
     '&': {
-        fontSize: '0.6rem', //fontSize: '1rem',
+      fontSize: '0.6rem', //fontSize: '1rem',
     },
     '.cm-scroller': {
       fontFamily:
@@ -24,7 +24,7 @@ const customTheme = EditorView.theme(
       opacity: 0.2,
     },
 
-      
+
   },
   {dark: false},  // wip: ?
 );
@@ -36,7 +36,7 @@ const extensions = [
   EditorView.editable.of(false),
   highlightWhitespace(),
   javascript(),
-  
+
   oneDark,
   customTheme,
 ];
@@ -53,16 +53,16 @@ export default class SourceCodeElement {
   constructor(getItemId) {
     this.#getItemId = getItemId;
     this.#codeStr = '';
-    
+
     this.#editorWrap = DomFactory.create('div', {
       setStyles: {
         //'margin': '0',
         //width: '88%',
         //height: '72%',
-        overflow:'scroll',
+        // overflow: 'scroll',
       },
     });
-    
+
     this.#editorView = this.#createEditor();
     this.#showButton = this.#createShowButton();
     this.#dialog = this.#createDialog();
@@ -75,17 +75,17 @@ export default class SourceCodeElement {
   get showButton() {
     return this.#showButton;
   }
-  
+
   #createEditor() {
     const state = EditorState.create({
       extensions: extensions,
     });
-    
+
     const view = new EditorView({
       state: state,
       parent: this.#editorWrap,
     });
-    
+
     return view;
   }
 
@@ -131,7 +131,7 @@ export default class SourceCodeElement {
     const wrapper = DomFactory.create('div', {
       addClassList: ['dialog-container',],
       appendChildren: [
-        
+
         DomFactory.create('div', {
           setStyles: {
             //margin: '0.5rem 0',
@@ -140,7 +140,7 @@ export default class SourceCodeElement {
             //position: 'sticky',
             //top: 0,
           },
-          
+
           appendChildren: [
             closeButton,
             copyButton,
@@ -188,7 +188,7 @@ export default class SourceCodeElement {
               }
               this.#codeStr = codeStr;
               this.#editorView.dispatch({
-                changes: {from: 0, to:this.#editorView.state.doc.length, insert: this.#codeStr},
+                changes: {from: 0, to: this.#editorView.state.doc.length, insert: this.#codeStr},
               });
               dialog.showModal();
             },
@@ -226,5 +226,3 @@ export default class SourceCodeElement {
     return showButton;
   }
 }
-
-

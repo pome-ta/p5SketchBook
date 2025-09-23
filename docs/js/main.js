@@ -79,7 +79,7 @@ const wrap = DomFactory.create('div', {
     'font-family':
       'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
     'font-size': '0.8rem',
-    
+
   },
   addClassList: ['dialog-container',],
 });
@@ -255,9 +255,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(buttonLayout);
   document.body.appendChild(dirTreeDialog);
   document.body.appendChild(sc.dialog);
-  
+
   dirTreeDialog.showModal();
-  
+
 
 });
 /*

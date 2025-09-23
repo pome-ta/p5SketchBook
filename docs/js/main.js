@@ -79,7 +79,7 @@ const wrap = DomFactory.create('div', {
     'font-family':
       'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
     'font-size': '0.8rem',
-    //width: '100%',
+    
   },
   addClassList: ['dialog-container',],
 });

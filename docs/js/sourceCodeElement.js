@@ -1,9 +1,8 @@
 import DomFactory from './utils/domFactory.js';
 
 import {EditorState} from '@codemirror/state';
-import {EditorView, highlightWhitespace} from '@codemirror/view@6.38.0';
+import {EditorView, highlightWhitespace} from '@codemirror/view';
 import {javascript} from '@codemirror/lang-javascript';
-import {oneDark} from '@codemirror/theme-one-dark';
 
 import {basicSetup} from 'codemirror';
 
@@ -11,11 +10,8 @@ import {basicSetup} from 'codemirror';
 const customTheme = EditorView.theme(
   {
     '&': {
+      fontFamily: 'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
       fontSize: '0.6rem', //fontSize: '1rem',
-    },
-    '.cm-scroller': {
-      fontFamily:
-        'Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace',
     },
     // `highlightWhitespace` 調整
     '.cm-highlightSpace': {
@@ -23,8 +19,6 @@ const customTheme = EditorView.theme(
         'radial-gradient(circle at 50% 55%, #ababab 4%, transparent 24%)',
       opacity: 0.2,
     },
-
-
   },
   {dark: false},  // wip: ?
 );
@@ -36,8 +30,6 @@ const extensions = [
   EditorView.editable.of(false),
   highlightWhitespace(),
   javascript(),
-
-  oneDark,
   customTheme,
 ];
 

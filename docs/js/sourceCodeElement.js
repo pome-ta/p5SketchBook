@@ -1,7 +1,7 @@
 import DomFactory from './utils/domFactory.js';
 
 import {EditorState} from '@codemirror/state';
-import {EditorView, highlightWhitespace} from '@codemirror/view';
+import {EditorView, highlightWhitespace} from '@codemirror/view@6.38.0';
 import {javascript} from '@codemirror/lang-javascript';
 import {oneDark} from '@codemirror/theme-one-dark';
 

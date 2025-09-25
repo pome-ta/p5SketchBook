@@ -2,7 +2,7 @@ import DomFactory from './utils/domFactory.js';
 
 import {EditorState} from '@codemirror/state';
 import {EditorView, highlightWhitespace} from '@codemirror/view';
-import {javascript} from '@codemirror/lang-javascript';
+import {typescriptLanguage} from '@codemirror/lang-javascript';
 
 import {basicSetup} from 'codemirror';
 
@@ -29,7 +29,7 @@ const extensions = [
   EditorState.readOnly.of(true),
   EditorView.editable.of(false),
   highlightWhitespace(),
-  javascript(),
+  typescriptLanguage,
   customTheme,
 ];
 

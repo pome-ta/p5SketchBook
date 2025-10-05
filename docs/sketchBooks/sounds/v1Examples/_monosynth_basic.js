@@ -12,7 +12,7 @@ const sketch = (p) => {
 
   p.preload = () => {
     p.loadModule(interactionTraceKitPath, (m) => {
-      const {PointerTracker, TapIndicator} = m;
+      const { PointerTracker, TapIndicator } = m;
       pointerTracker = new PointerTracker(p);
       tapIndicator = new TapIndicator(p);
     });
@@ -56,8 +56,7 @@ const sketch = (p) => {
     monoSynth.triggerAttack(midiVal, p.random());
   };
 
-  p.touchMoved = (e) => {
-  };
+  p.touchMoved = (e) => {};
 
   p.touchEnded = (e) => {
     monoSynth.triggerRelease();

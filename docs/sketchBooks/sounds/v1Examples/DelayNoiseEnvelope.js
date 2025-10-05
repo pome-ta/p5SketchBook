@@ -15,8 +15,7 @@
  *  MouseY は、p5.Delay Time と Resonance の両方を制御します。
  */
 
-const interactionTraceKitPath =
-  'modules/interactionTraceKit.js';
+const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 
 const sketch = (p) => {
   let w, h;
@@ -28,7 +27,7 @@ const sketch = (p) => {
 
   p.preload = () => {
     p.loadModule(interactionTraceKitPath, (m) => {
-      const {PointerTracker, TapIndicator} = m;
+      const { PointerTracker, TapIndicator } = m;
       pointerTracker = new PointerTracker(p);
       tapIndicator = new TapIndicator(p);
     });
@@ -108,11 +107,9 @@ const sketch = (p) => {
     env.play(noise, 0, 0.1, 0);
   };
 
-  p.touchMoved = (e) => {
-  };
+  p.touchMoved = (e) => {};
 
-  p.touchEnded = (e) => {
-  };
+  p.touchEnded = (e) => {};
 
   p.windowResized = (e) => {
     w = p.windowWidth;

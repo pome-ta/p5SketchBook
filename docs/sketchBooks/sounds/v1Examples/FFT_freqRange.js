@@ -1,6 +1,5 @@
 // [p5.js-sound/examples/FFT_freqRange/sketch.js at main · processing/p5.js-sound · GitHub](https://github.com/processing/p5.js-sound/blob/main/examples/FFT_freqRange/sketch.js)
 
-
 /**
  * Display the average amount of energy (amplitude) across a range
  * of frequencies using the p5.FFT class and its methods analyze()
@@ -12,13 +11,11 @@
 const soundFileURL =
   'https://github.com/processing/p5.js-sound/blob/main/examples/files/beat.ogg';
 
-
 // todo: `p.loadSound` 用 => 通常のGitHub URL を`githubusercontent` へ置き換え
 const githubusercontent = (githubUrl) =>
   githubUrl
     .replace('https://github.com/', 'https://raw.githubusercontent.com/')
     .replace('/blob/', '/');
-
 
 const sketch = (p) => {
   let w, h;
@@ -30,7 +27,6 @@ const sketch = (p) => {
   let description = 'loading';
   let pTag;
 
-
   p.preload = () => {
     const url = githubusercontent(soundFileURL);
     soundFile = p.loadSound(url);
@@ -40,7 +36,6 @@ const sketch = (p) => {
     // put setup code here
     w = p.windowWidth;
     h = p.windowHeight;
-
 
     p.createCanvas(w, h / rate);
 
@@ -52,9 +47,9 @@ const sketch = (p) => {
     fft = new p5.FFT();
 
     pTag = p.createP(description);
-    const p2Tag = p.createP('Description: Using getEnergy(low, high) to measure amplitude within a range of frequencies.');
-
-
+    const p2Tag = p.createP(
+      'Description: Using getEnergy(low, high) to measure amplitude within a range of frequencies.'
+    );
   };
 
   p.draw = () => {
@@ -65,22 +60,24 @@ const sketch = (p) => {
     fft.analyze();
     for (let i = 0; i < 8; i++) {
       p.noStroke();
-      p.fill((i * 30) % 100 + 50, 195, (i * 25 + 50) % 255);
+      p.fill(((i * 30) % 100) + 50, 195, (i * 25 + 50) % 255);
       // Each bar has a unique frequency range
       const centerFreq = (p.pow(2, i) * 125) / 2;
       const loFreq = (p.pow(2, i - 1) * 125) / 2 + centerFreq / 4;
-      const hiFreq = (centerFreq + centerFreq / 2);
+      const hiFreq = centerFreq + centerFreq / 2;
 
       const freqValue = fft.getEnergy(loFreq, hiFreq - 1);
       // Rectangle height represents the average value of this frequency range
-      const _h = (-h / rate) + p.map(freqValue, 0, 255, h / rate, 0);
-      p.rect((i + 1) * w / 8 - w / 8, h / rate, w / 8, _h);
+      const _h = -h / rate + p.map(freqValue, 0, 255, h / rate, 0);
+      p.rect(((i + 1) * w) / 8 - w / 8, h / rate, w / 8, _h);
 
       p.fill(255);
-      p.text(loFreq.toFixed(0) + ' Hz - ' + hiFreq.toFixed(0) + ' Hz', (i + 1) * w / 8 - w / 8 / 2, 30);
+      p.text(
+        loFreq.toFixed(0) + ' Hz - ' + hiFreq.toFixed(0) + ' Hz',
+        ((i + 1) * w) / 8 - w / 8 / 2,
+        30
+      );
     }
-
-
   };
 
   // Change description text if the song is loading, playing or paused
@@ -119,11 +116,9 @@ const sketch = (p) => {
     soundFile.isPlaying() ? soundFile.pause() : soundFile.loop();
   };
 
-  p.touchMoved = (e) => {
-  };
+  p.touchMoved = (e) => {};
 
-  p.touchEnded = (e) => {
-  };
+  p.touchEnded = (e) => {};
 
   p.windowResized = (e) => {
     w = p.windowWidth;

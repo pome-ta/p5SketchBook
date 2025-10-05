@@ -4,7 +4,6 @@ const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 //const spectrumAnalyzerPath = './modules/spectrumAnalyzer.js';
 //const interactionTraceKitPath ='./modules/interactionTraceKit.js';
 
-
 const sketch = (p) => {
   let w, h;
   let bgColor;
@@ -31,7 +30,7 @@ const sketch = (p) => {
       spectrumAnalyzer = new SpectrumAnalyzer(p);
     });
     p.loadModule(interactionTraceKitPath, (m) => {
-      const {PointerTracker, TapIndicator} = m;
+      const { PointerTracker, TapIndicator } = m;
       pointerTracker = new PointerTracker(p);
       tapIndicator = new TapIndicator(p);
     });
@@ -96,14 +95,11 @@ const sketch = (p) => {
     spectrumAnalyzer.drawSpectrum(spectrum);
   };
 
-  p.touchStarted = (e) => {
-  };
+  p.touchStarted = (e) => {};
 
-  p.touchMoved = (e) => {
-  };
+  p.touchMoved = (e) => {};
 
-  p.touchEnded = (e) => {
-  };
+  p.touchEnded = (e) => {};
 
   p.windowResized = (e) => {
     w = p.windowWidth;
@@ -113,4 +109,3 @@ const sketch = (p) => {
 };
 
 new p5(sketch);
-

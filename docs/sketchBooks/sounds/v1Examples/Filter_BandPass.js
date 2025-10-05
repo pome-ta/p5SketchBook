@@ -1,13 +1,11 @@
 // [p5.js-sound/examples/Filter_BandPass/sketch.js at main · processing/p5.js-sound · GitHub](https://github.com/processing/p5.js-sound/blob/main/examples/Filter_BandPass/sketch.js)
 
-
 /**
  *  Example: Apply a p5.BandPass filter to white noise.
  *  Visualize the sound with FFT.
  *  Map mouseX to the bandpass frequency
  *  and mouseY to resonance/width of the a BandPass filter
  */
-
 
 const interactionTraceKitPath = 'modules/interactionTraceKit.js';
 
@@ -26,7 +24,7 @@ const sketch = (p) => {
 
   p.preload = () => {
     p.loadModule(interactionTraceKitPath, (m) => {
-      const {PointerTracker, TapIndicator} = m;
+      const { PointerTracker, TapIndicator } = m;
       pointerTracker = new PointerTracker(p);
       tapIndicator = new TapIndicator(p);
     });
@@ -36,7 +34,6 @@ const sketch = (p) => {
     // put setup code here
     w = p.windowWidth;
     h = p.windowHeight;
-
 
     p.createCanvas(w, h);
     p.fill(255, 40, 255);
@@ -56,14 +53,11 @@ const sketch = (p) => {
     p.textFont('monospace');
     p.text(description, ...pTag1);
 
-
     p.canvas.addEventListener(pointerTracker.move, (e) => e.preventDefault(), {
       passive: false,
     });
 
-
     tapIndicator.setup();
-
   };
 
   p.draw = () => {
@@ -76,7 +70,6 @@ const sketch = (p) => {
     filterWidth = p.map(p.mouseY, 0, h, 0, 90);
     // set filter parameters
     filter.set(filterFreq, filterWidth);
-
 
     // Draw every value in the FFT spectrum analysis where
     // x = lowest (10Hz) to highest (22050Hz) frequencies,
@@ -91,26 +84,26 @@ const sketch = (p) => {
       p.rect(x, h, w / length, _h);
     });
     updateDescription();
-
   };
 
   function updateDescription() {
     p.push();
     p.fill(255 - 30);
-    description = 'Playing! Press any key to pause.\nFilter Frequency:\n' + filterFreq + '\nFilter Width:\n' + filterWidth;
+    description =
+      'Playing! Press any key to pause.\nFilter Frequency:\n' +
+      filterFreq +
+      '\nFilter Width:\n' +
+      filterWidth;
 
     p.text(description, ...pTag1);
     p.pop();
   }
 
-  p.touchStarted = (e) => {
-  };
+  p.touchStarted = (e) => {};
 
-  p.touchMoved = (e) => {
-  };
+  p.touchMoved = (e) => {};
 
-  p.touchEnded = (e) => {
-  };
+  p.touchEnded = (e) => {};
 
   p.windowResized = (e) => {
     w = p.windowWidth;
